@@ -12,7 +12,6 @@ export type IconName =
   | 'api'
   | 'loading'
   | 'logout'
-  | 'code'
 
 export type TechLogo =
   | 'javascript'
@@ -23,7 +22,6 @@ export type TechLogo =
   | 'postgresql'
   | 'supabase'
   | 'vercel'
-  | 'vite'
   | 'figma'
   | 'git'
   | 'github'
