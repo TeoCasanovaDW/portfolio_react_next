@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #1e1e1e;
+  --color-accent: #8580f6;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #c7c7c7;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-space-grotesk);
+}
+
+body {
+  background: radial-gradient(ellipse at center, #161616 0%, #121212 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--color-text-primary);
+  font-family: var(--font-inter, sans-serif);
+}
