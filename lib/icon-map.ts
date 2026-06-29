@@ -29,6 +29,8 @@ export const techLogoMap: Record<TechLogo, string> = {
   git: '/icons/tech/git.svg',
   github: '/icons/tech/github.svg',
   vitest: '/icons/tech/vitest.svg',
+  agile: '/icons/tech/agile.svg',
+  sdd: '/icons/tech/sdd.svg',
 }
 
 export const socialIconMap: Record<'linkedin' | 'github', string> = {

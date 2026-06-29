@@ -26,6 +26,8 @@ export type TechLogo =
   | 'git'
   | 'github'
   | 'vitest'
+  | 'agile'
+  | 'sdd'
 
 export type ProjectLink = {
   label: string
