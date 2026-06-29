@@ -3,7 +3,7 @@ import type { IconName, TechLogo } from '@/types/project'
 export const iconMap: Record<IconName, string> = {
   github: '/icons/social/github.svg',
   linkedin: '/icons/social/linkedin.svg',
-  arrowRight: '/icons/ui/arrow-right.svg',
+  arrowRight: '/icons/ui/arrow-right-light.svg',
   arrowLeft: '/icons/ui/arrow-left-light.svg',
   copy: '/icons/ui/copy.svg',
   menu: '/icons/ui/menu.svg',
