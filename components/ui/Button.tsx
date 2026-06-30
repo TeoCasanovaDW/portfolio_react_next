@@ -11,6 +11,7 @@ type Props = {
   iconPosition?: 'left' | 'right'
   href?: string
   onClick?: () => void
+  type?: 'button' | 'submit'
   className?: string
 }
 
@@ -33,6 +34,7 @@ export default function Button({
   iconPosition = 'right',
   href,
   onClick,
+  type = 'button',
   className = '',
 }: Props) {
   const base = `inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors duration-150 ${variantClasses[variant]} ${className}`
@@ -63,7 +65,7 @@ export default function Button({
   }
 
   return (
-    <button type="button" onClick={onClick} className={base}>
+    <button type={type} onClick={onClick} className={base}>
       {content}
     </button>
   )

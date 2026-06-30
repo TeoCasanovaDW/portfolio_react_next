@@ -19,6 +19,7 @@ export const iconMap: Record<IconName, string> = {
   filter: '/icons/features/filter.svg',
   monitoring: '/icons/features/monitoring.svg',
   link: '/icons/features/link.svg',
+  send: '/icons/ui/send.svg',
 }
 
 export const techLogoMap: Record<TechLogo, string> = {

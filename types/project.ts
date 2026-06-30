@@ -17,6 +17,7 @@ export type IconName =
   | 'filter'
   | 'monitoring'
   | 'link'
+  | 'send'
 
 export type TechLogo =
   | 'javascript'
