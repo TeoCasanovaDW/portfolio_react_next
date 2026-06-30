@@ -41,7 +41,7 @@ export default async function ProjectPage({ params }: Props) {
       </div>
 
       {/* Image */}
-      <div className="mb-8 rounded-2xl overflow-hidden">
+      <div className="mb-8 rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_10px_rgba(255,255,255,0.05)] ">
         <ProjectImage src={project.image} alt={project.name} />
       </div>
 

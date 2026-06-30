@@ -9,13 +9,15 @@ type Props = {
 export default function ProjectImage({ src, alt, className = '' }: Props) {
   return (
     <div className={`relative w-full aspect-video overflow-hidden ${className}`}>
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className="object-cover"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-      />
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      quality={100}
+      priority
+      className="object-cover object-top"
+      sizes="(max-width:768px) 100vw, (max-width:1200px) 90vw, 1400px"
+    />
     </div>
   )
 }

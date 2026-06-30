@@ -4,6 +4,7 @@ export type IconName =
   | 'arrowRight'
   | 'arrowLeft'
   | 'copy'
+  | 'copyLight'
   | 'menu'
   | 'auth'
   | 'route'

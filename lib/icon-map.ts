@@ -6,6 +6,7 @@ export const iconMap: Record<IconName, string> = {
   arrowRight: '/icons/ui/arrow-right-light.svg',
   arrowLeft: '/icons/ui/arrow-left-light.svg',
   copy: '/icons/ui/copy.svg',
+  copyLight: '/icons/features/copy-light.svg',
   menu: '/icons/ui/menu.svg',
   auth: '/icons/tech/auth.svg',
   api: '/icons/tech/api.svg',

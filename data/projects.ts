@@ -2,6 +2,64 @@ import type { Project } from '@/types/project'
 
 export const projects: Project[] = [
   {
+    slug: 'portfolio',
+    name: 'Portfolio',
+    year: '2026',
+    type: 'Application web Next.js / Portfolio développeur',
+    shortDescription:
+      'Portfolio personnel conçu pour présenter mon profil, mes projets et mon positionnement de développeur React / Next.js.',
+    description:
+      'Application Next.js développée pour présenter mon parcours, mes compétences et mes projets à travers une interface responsive, sobre et maintenable.',
+    image: '/images/projects/portfolio.png',
+    links: [
+      {
+        label: 'GitHub',
+        href: 'https://github.com/TeoCasanovaDW/portfolio_react_next',
+        icon: 'github',
+        variant: 'dark',
+      },
+    ],
+    tags: ['Front-End', 'Next.js', 'Portfolio'],
+    techLogos: ['next', 'typescript', 'react', 'vercel', 'figma'],
+    stack: [
+      'Next.js App Router',
+      'TypeScript',
+      'React',
+      'Tailwind CSS',
+      'Resend',
+      'Vercel',
+      'Figma',
+    ],
+    context:
+      'Projet personnel réalisé pour construire un portfolio cohérent avec mon objectif professionnel : devenir développeur React / Next.js sur des applications web modernes.',
+    technicalChoices: [
+      'Next.js App Router pour structurer les pages et la navigation',
+      'TypeScript pour typer les données du portfolio',
+      'Tailwind CSS pour construire une interface responsive fidèle aux maquettes',
+      'Données locales typées pour gérer les projets, compétences et liens',
+      'Resend pour rendre le formulaire de contact fonctionnel',
+    ],
+    features: [
+      { label: 'Design responsive', icon: 'dashboard' },
+      { label: 'Pages dynamiques', icon: 'route' },
+      { label: 'Données typées', icon: 'api' },
+      { label: 'Formulaire contact', icon: 'api' },
+      { label: 'Email copiable', icon: 'copyLight' },
+    ],
+    demonstrates: [
+      'Conception complète d’un portfolio de développeur',
+      'Traduction de maquettes Figma en interface responsive',
+      'Structuration d’une application Next.js maintenable',
+      'Réutilisation de composants UI cohérents',
+      'Mise en place d’un formulaire de contact fonctionnel avec Resend',
+    ],
+    limits: [
+      'Contenu administré manuellement dans des fichiers TypeScript',
+      'Pas de CMS ou back-office',
+      'Pas de light mode en V1',
+    ],
+  },
+  {
     slug: 'ai-model-radar',
     name: 'AI Model Radar',
     year: '2026',
@@ -31,7 +89,7 @@ export const projects: Project[] = [
       'Vercel Cron',
     ],
     context:
-      'Projet portfolio visant à construire une application data complète autour des modèles IA d\'OpenRouter, avec synchronisation automatique, historique et interface d\'exploration.',
+      "Projet portfolio visant à construire une application data complète autour des modèles IA d'OpenRouter, avec synchronisation automatique, historique et interface d'exploration.",
     technicalChoices: [
       'Next.js App Router pour structurer les pages et la navigation',
       'Supabase PostgreSQL pour stocker les modèles, snapshots et runs de synchronisation',
@@ -45,13 +103,13 @@ export const projects: Project[] = [
       { label: 'Recherche et filtres', icon: 'filter' },
       { label: 'Pages détail modèle', icon: 'route' },
       { label: 'Dashboard data', icon: 'dashboard' },
-      { label: 'Graphiques d\'évolution', icon: 'monitoring' },
+      { label: "Graphiques d'évolution", icon: 'monitoring' },
       { label: 'Filtres persistants', icon: 'link' },
     ],
     demonstrates: [
       'Développement full-stack avec Next.js et TypeScript',
-      'Intégration d\'une API tierce avec normalisation des données',
-      'Modélisation d\'une base PostgreSQL avec Supabase',
+      "Intégration d'une API tierce avec normalisation des données",
+      "Modélisation d'une base PostgreSQL avec Supabase",
       'Automatisation de synchronisations avec Vercel Cron',
       'Visualisation de données dans une interface claire et maintenable',
     ],
@@ -83,12 +141,12 @@ export const projects: Project[] = [
     techLogos: ['javascript', 'react', 'auth', 'vercel'],
     stack: ['React 18', 'React Router 6', 'Context API', 'Fetch API', 'Recharts', 'Vite', 'CSS'],
     context:
-      'Projet réalisé dans le cadre du parcours OpenClassrooms. L\'objectif était de transformer une maquette HTML/CSS existante en application React fonctionnelle, avec authentification JWT, routes protégées et données dynamiques.',
+      "Projet réalisé dans le cadre du parcours OpenClassrooms. L'objectif était de transformer une maquette HTML/CSS existante en application React fonctionnelle, avec authentification JWT, routes protégées et données dynamiques.",
     technicalChoices: [
       'Architecture claire avec séparation des composants, pages, services, hooks et contextes',
-      'Context API pour centraliser les informations liées à l\'utilisateur connecté',
+      "Context API pour centraliser les informations liées à l'utilisateur connecté",
       'React Router pour gérer la navigation et les routes protégées',
-      'Fetch API pour récupérer les données depuis l\'API locale',
+      "Fetch API pour récupérer les données depuis l'API locale",
       'Recharts pour afficher les statistiques sportives sous forme de graphiques dynamiques',
     ],
     features: [
@@ -101,9 +159,9 @@ export const projects: Project[] = [
       { label: 'Déconnexion', icon: 'logout' },
     ],
     demonstrates: [
-      'Intégration d\'une maquette existante dans une application React structurée',
-      'Gestion de l\'authentification et des routes protégées',
-      'Consommation d\'une API locale avec Fetch API',
+      "Intégration d'une maquette existante dans une application React structurée",
+      "Gestion de l'authentification et des routes protégées",
+      "Consommation d'une API locale avec Fetch API",
       'Affichage de données dynamiques sous forme de graphiques',
       'Organisation maintenable entre composants, services, hooks et contextes',
     ],
@@ -111,7 +169,7 @@ export const projects: Project[] = [
       'API uniquement locale',
       'Certaines données restent statiques car non fournies par le back-end',
       'Pas encore de tests automatisés',
-      'Projet principalement centré sur l\'intégration et la logique front-end',
+      "Projet principalement centré sur l'intégration et la logique front-end",
     ],
   },
 ]
