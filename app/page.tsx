@@ -7,7 +7,7 @@ export default function HomePage() {
     <section className="flex min-h-[calc(100vh-80px)] items-center">
       <div className="w-full max-w-[1200px] mx-auto px-6 py-16">
         <div className="max-w-[900px]">
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-[56px] font-semibold text-white leading-tight mb-8">
+          <h1 className="font-heading text-4xl md:text-5xl lg:text-[56px] font-semibold text-white leading-tight mb-14">
             Développeur React <span className="text-accent">/</span> Next.js
           </h1>
 

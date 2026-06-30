@@ -28,7 +28,7 @@ export default function ProjectCard({ project }: Props) {
 
         <div>
           <Link href={`/projects/${project.slug}`}>
-            <h3 className="font-heading text-xl font-semibold text-white hover:text-text-secondary transition-colors duration-150">
+            <h3 className="font-heading text-xl font-semibold text-white hover:text-accent transition-colors duration-150">
               {project.name}
             </h3>
           </Link>
