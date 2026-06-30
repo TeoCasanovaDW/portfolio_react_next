@@ -12,6 +12,11 @@ export type IconName =
   | 'api'
   | 'loading'
   | 'logout'
+  | 'sync'
+  | 'history'
+  | 'filter'
+  | 'monitoring'
+  | 'link'
 
 export type TechLogo =
   | 'javascript'
@@ -28,6 +33,7 @@ export type TechLogo =
   | 'vitest'
   | 'agile'
   | 'sdd'
+  | 'auth'
 
 export type ProjectLink = {
   label: string

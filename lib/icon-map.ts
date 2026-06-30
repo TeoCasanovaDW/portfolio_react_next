@@ -14,6 +14,11 @@ export const iconMap: Record<IconName, string> = {
   chart: '/icons/features/chart.svg',
   loading: '/icons/features/loading.svg',
   logout: '/icons/features/logout.svg',
+  sync: '/icons/features/sync.svg',
+  history: '/icons/features/history.svg',
+  filter: '/icons/features/filter.svg',
+  monitoring: '/icons/features/monitoring.svg',
+  link: '/icons/features/link.svg',
 }
 
 export const techLogoMap: Record<TechLogo, string> = {
@@ -31,6 +36,7 @@ export const techLogoMap: Record<TechLogo, string> = {
   vitest: '/icons/tech/vitest.svg',
   agile: '/icons/tech/agile.svg',
   sdd: '/icons/tech/sdd.svg',
+  auth: '/icons/tech/auth.svg',
 }
 
 export const socialIconMap: Record<'linkedin' | 'github', string> = {

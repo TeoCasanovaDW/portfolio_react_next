@@ -8,6 +8,7 @@ type Props = {
   label: string
   variant?: Variant
   icon?: IconName
+  iconPosition?: 'left' | 'right'
   href?: string
   onClick?: () => void
   className?: string
@@ -29,16 +30,22 @@ export default function Button({
   label,
   variant = 'primary',
   icon,
+  iconPosition = 'right',
   href,
   onClick,
   className = '',
 }: Props) {
   const base = `inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors duration-150 ${variantClasses[variant]} ${className}`
 
+  const iconEl = icon ? (
+    <Icon name={icon} size={16} alt="" className={iconClasses[variant]} />
+  ) : null
+
   const content = (
     <>
+      {iconPosition === 'left' && iconEl}
       {label}
-      {icon && <Icon name={icon} size={16} alt="" className={iconClasses[variant]} />}
+      {iconPosition === 'right' && iconEl}
     </>
   )
 
