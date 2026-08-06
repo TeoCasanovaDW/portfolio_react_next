@@ -36,6 +36,7 @@ export type TechLogo =
   | 'agile'
   | 'sdd'
   | 'auth'
+  | 'mistral'
 
 export type ProjectLink = {
   label: string
