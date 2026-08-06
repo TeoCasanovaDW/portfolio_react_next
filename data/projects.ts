@@ -14,7 +14,7 @@ export const projects: Project[] = [
     links: [
       {
         label: 'GitHub',
-        href: 'À_REMPLACER_PAR_L_URL_DU_REPOSITORY',
+        href: 'https://github.com/TeoCasanovaDW/ABRICOT',
         icon: 'github',
         variant: 'dark',
       },
