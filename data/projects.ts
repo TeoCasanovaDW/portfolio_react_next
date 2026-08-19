@@ -87,7 +87,7 @@ export const projects: Project[] = [
       },
     ],
     tags: ['Full-Stack', 'SaaS', 'IA'],
-    techLogos: ['next', 'typescript', 'react', 'auth', 'mistral', 'docker'],
+    techLogos: ['next', 'typescript', 'auth', 'mistral', 'docker', 'cypress'],
     stack: [
       'Next.js App Router',
       'TypeScript',
