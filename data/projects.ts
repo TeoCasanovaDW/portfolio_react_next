@@ -1,6 +1,67 @@
 import type { Project } from '@/types/project'
 
 export const projects: Project[] = [
+  // {
+  //   slug: 'abricot',
+  //   name: 'Abricot',
+  //   year: '2026',
+  //   type: 'Application web Next.js / SaaS de gestion de projet',
+  //   shortDescription:
+  //     'Application collaborative pour gérer des projets, des tâches, des contributeurs et générer des tâches avec l’aide de l’IA.',
+  //   description:
+  //     'Application Next.js de gestion de projet permettant de créer des projets, organiser les tâches, gérer les contributeurs et générer des brouillons de tâches avec Mistral.',
+  //   image: '/images/projects/abricot.png',
+  //   links: [
+  //     {
+  //       label: 'GitHub',
+  //       href: 'https://github.com/TeoCasanovaDW/ABRICOT',
+  //       icon: 'github',
+  //       variant: 'dark',
+  //     },
+  //   ],
+  //   tags: ['Full-Stack', 'SaaS', 'IA'],
+  //   techLogos: ['next', 'typescript', 'react', 'auth', 'mistral'],
+  //   stack: [
+  //     'Next.js App Router',
+  //     'TypeScript',
+  //     'React',
+  //     'React Hook Form',
+  //     'Zod',
+  //     'CSS Modules',
+  //     'Mistral API',
+  //     'Express API',
+  //   ],
+  //   context:
+  //     "Projet réalisé dans le cadre du parcours OpenClassrooms. L'objectif était de développer l'ensemble du frontend d'un SaaS collaboratif à partir d'une API Express existante.",
+  //   technicalChoices: [
+  //     'Next.js App Router pour séparer le chargement serveur des interactions côté client',
+  //     'Route Handlers pour sécuriser les échanges entre le navigateur et l’API Express',
+  //     'React Hook Form et Zod pour gérer et valider les formulaires',
+  //     'TypeScript pour typer précisément les différentes réponses de l’API',
+  //     'Mistral côté serveur pour générer des brouillons de tâches validés avant création',
+  //   ],
+  //   features: [
+  //     { label: 'Gestion des projets', icon: 'dashboard' },
+  //     { label: 'Gestion des tâches', icon: 'route' },
+  //     { label: 'Contributeurs', icon: 'auth' },
+  //     { label: 'Vue Liste / Kanban', icon: 'monitoring' },
+  //     { label: 'Génération par IA', icon: 'api' },
+  //     { label: 'Authentification JWT', icon: 'auth' },
+  //     { label: 'Interface responsive', icon: 'dashboard' },
+  //   ],
+  //   demonstrates: [
+  //     "Développement d'un frontend Next.js complet à partir d'une API existante",
+  //     'Gestion de formulaires complexes avec React Hook Form et Zod',
+  //     'Intégration sécurisée d’un LLM avec validation des réponses',
+  //     'Gestion des permissions, erreurs et sauvegardes partielles',
+  //     'Mise en place d’une interface responsive et accessible',
+  //   ],
+  //   limits: [
+  //     'Backend fourni et amélioré dans le cadre du projet',
+  //     'Création des tâches IA réalisée séquentiellement sans endpoint de création en masse',
+  //     'Certaines limites du backend sont compensées côté frontend',
+  //   ],
+  // },
   {
     slug: 'abricot',
     name: 'Abricot',
@@ -13,6 +74,12 @@ export const projects: Project[] = [
     image: '/images/projects/abricot.png',
     links: [
       {
+        label: 'Voir le site',
+        href: 'https://abricot-front.vercel.app/',
+        icon: 'link',
+        variant: 'primary',
+      },
+      {
         label: 'GitHub',
         href: 'https://github.com/TeoCasanovaDW/ABRICOT',
         icon: 'github',
@@ -20,7 +87,7 @@ export const projects: Project[] = [
       },
     ],
     tags: ['Full-Stack', 'SaaS', 'IA'],
-    techLogos: ['next', 'typescript', 'react', 'auth', 'mistral'],
+    techLogos: ['next', 'typescript', 'react', 'auth', 'mistral', 'docker'],
     stack: [
       'Next.js App Router',
       'TypeScript',
@@ -28,17 +95,26 @@ export const projects: Project[] = [
       'React Hook Form',
       'Zod',
       'CSS Modules',
+      'Express',
+      'Prisma',
+      'PostgreSQL / Supabase',
       'Mistral API',
-      'Express API',
+      'Docker',
+      'Vitest / RTL',
+      'Cypress',
+      'GitHub Actions',
     ],
     context:
-      "Projet réalisé dans le cadre du parcours OpenClassrooms. L'objectif était de développer l'ensemble du frontend d'un SaaS collaboratif à partir d'une API Express existante.",
+      "Projet réalisé dans le cadre du parcours OpenClassrooms. L'objectif était de développer le frontend d'un SaaS collaboratif à partir d'une API Express existante, puis d'en améliorer l'environnement technique et la qualité.",
     technicalChoices: [
       'Next.js App Router pour séparer le chargement serveur des interactions côté client',
       'Route Handlers pour sécuriser les échanges entre le navigateur et l’API Express',
       'React Hook Form et Zod pour gérer et valider les formulaires',
-      'TypeScript pour typer précisément les différentes réponses de l’API',
+      'Prisma et PostgreSQL Supabase pour assurer une persistance distante des données',
       'Mistral côté serveur pour générer des brouillons de tâches validés avant création',
+      'Docker pour conteneuriser le backend et fiabiliser son environnement d’exécution',
+      'Vitest, RTL et Cypress pour couvrir les comportements métier et parcours critiques',
+      'GitHub Actions pour automatiser lint, typecheck, tests et builds',
     ],
     features: [
       { label: 'Gestion des projets', icon: 'dashboard' },
@@ -50,16 +126,18 @@ export const projects: Project[] = [
       { label: 'Interface responsive', icon: 'dashboard' },
     ],
     demonstrates: [
-      "Développement d'un frontend Next.js complet à partir d'une API existante",
+      "Développement d'un frontend Next.js complet connecté à une API Express",
       'Gestion de formulaires complexes avec React Hook Form et Zod',
       'Intégration sécurisée d’un LLM avec validation des réponses',
-      'Gestion des permissions, erreurs et sauvegardes partielles',
-      'Mise en place d’une interface responsive et accessible',
+      'Migration de SQLite vers PostgreSQL Supabase avec Prisma',
+      'Conteneurisation d’un backend Node avec Docker',
+      'Mise en place de tests unitaires, composants et E2E',
+      'Automatisation des contrôles qualité avec GitHub Actions',
     ],
     limits: [
-      'Backend fourni et amélioré dans le cadre du projet',
+      'Backend initialement fourni puis adapté pour PostgreSQL et le déploiement',
       'Création des tâches IA réalisée séquentiellement sans endpoint de création en masse',
-      'Certaines limites du backend sont compensées côté frontend',
+      'Couverture de tests volontairement ciblée sur les parcours et logiques critiques',
     ],
   },
   {

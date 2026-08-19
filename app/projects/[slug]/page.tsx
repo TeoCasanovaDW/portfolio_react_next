@@ -7,6 +7,8 @@ import TechLogoIcon from '@/components/ui/TechLogoIcon'
 import SectionTitle from '@/components/ui/SectionTitle'
 import IconBadge from '@/components/ui/IconBadge'
 import ProjectDetailList from '@/components/projects/ProjectDetailList'
+import ProjectLinks from '@/components/projects/ProjectLinks'
+import Icon from '@/components/ui/Icon'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -21,6 +23,8 @@ export default async function ProjectPage({ params }: Props) {
   const project = projects.find((p) => p.slug === slug)
 
   if (!project) notFound()
+
+  const siteLink = project.links.find((link) => link.icon === 'link')
 
   return (
     <div className="max-w-[1200px] mx-auto px-6 py-16">
@@ -42,21 +46,28 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* Image */}
       <div className="mb-8 rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_10px_rgba(255,255,255,0.05)] ">
-        <ProjectImage src={project.image} alt={project.name} />
+        {siteLink ? (
+          <a
+            href={siteLink.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block"
+          >
+            <ProjectImage src={project.image} alt={project.name} />
+            <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/60 text-white text-sm font-medium opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+              <Icon name={siteLink.icon ?? 'link'} size={16} alt="" />
+              {siteLink.label}
+            </div>
+          </a>
+        ) : (
+          <ProjectImage src={project.image} alt={project.name} />
+        )}
       </div>
 
       {/* Liens + tags + logos */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-20">
         <div className="flex flex-wrap items-center gap-3">
-          {project.links.map((link) => (
-            <Button
-              key={link.label}
-              label={link.label}
-              variant={link.variant}
-              icon={link.icon}
-              href={link.href}
-            />
-          ))}
+          <ProjectLinks links={project.links} />
           {project.tags.map((tag) => (
             <Badge key={tag} label={tag} variant="light" />
           ))}

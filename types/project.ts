@@ -37,6 +37,7 @@ export type TechLogo =
   | 'sdd'
   | 'auth'
   | 'mistral'
+  | 'docker'
 
 export type ProjectLink = {
   label: string
