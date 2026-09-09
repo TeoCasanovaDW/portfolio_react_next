@@ -5,9 +5,11 @@ import Icon from '@/components/ui/Icon'
 
 type Props = {
   email: string
+  label: string
+  copiedLabel: string
 }
 
-export default function CopyEmailButton({ email }: Props) {
+export default function CopyEmailButton({ email, label, copiedLabel }: Props) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
@@ -24,13 +26,13 @@ export default function CopyEmailButton({ email }: Props) {
     <button
       type="button"
       onClick={handleCopy}
-      aria-label="Copier l'adresse email"
+      aria-label={label}
       className="inline-flex items-center justify-between gap-6 px-5 py-3.5 rounded-2xl bg-accent hover:bg-accent/90 transition-colors duration-150 w-full sm:w-auto"
     >
       <span className="text-[#121212] font-medium text-sm">{email}</span>
       <span className="flex items-center gap-1.5 min-w-[52px] justify-end">
         {copied ? (
-          <span className="text-[#121212] text-xs font-medium">Copié !</span>
+          <span className="text-[#121212] text-xs font-medium">{copiedLabel}</span>
         ) : (
           <Icon name="copy" size={16} alt="" className="brightness-0" />
         )}

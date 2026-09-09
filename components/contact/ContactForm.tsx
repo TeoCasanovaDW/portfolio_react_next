@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 import Button from '@/components/ui/Button'
+import type { Dictionary, Locale } from '@/types/i18n'
+
+type FormCopy = Dictionary['contact']['form']
 
 type FormFields = {
   name: string
@@ -17,20 +20,20 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
-function validate(fields: FormFields): FormErrors {
+function validate(fields: FormFields, messages: FormCopy['errors']): FormErrors {
   const errors: FormErrors = {}
   const name = fields.name.trim()
   const email = fields.email.trim()
   const message = fields.message.trim()
 
   if (!name || name.length > 100) {
-    errors.name = 'Le nom est requis (100 caractères max).'
+    errors.name = messages.name
   }
   if (!email || !isValidEmail(email)) {
-    errors.email = 'Adresse email invalide.'
+    errors.email = messages.email
   }
   if (!message || message.length < 10 || message.length > 2000) {
-    errors.message = 'Le message doit contenir entre 10 et 2000 caractères.'
+    errors.message = messages.message
   }
   return errors
 }
@@ -38,7 +41,12 @@ function validate(fields: FormFields): FormErrors {
 const inputBase =
   'w-full bg-surface border rounded-xl px-4 py-3 text-white text-sm placeholder:text-text-secondary focus:outline-none transition-colors duration-150'
 
-export default function ContactForm() {
+type Props = {
+  locale: Locale
+  copy: FormCopy
+}
+
+export default function ContactForm({ locale, copy }: Props) {
   const [fields, setFields] = useState<FormFields>({ name: '', email: '', message: '' })
   const [errors, setErrors] = useState<FormErrors>({})
   const [status, setStatus] = useState<Status>('idle')
@@ -52,7 +60,7 @@ export default function ContactForm() {
     e.preventDefault()
     setGlobalError('')
 
-    const validationErrors = validate(fields)
+    const validationErrors = validate(fields, copy.errors)
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
       return
@@ -61,9 +69,11 @@ export default function ContactForm() {
     setStatus('loading')
 
     try {
+      // La locale voyage en en-tête : le corps garde sa forme, et la route peut
+      // localiser ses erreurs même quand le JSON est illisible.
       const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-locale': locale },
         body: JSON.stringify(fields),
       })
 
@@ -72,11 +82,11 @@ export default function ContactForm() {
         setFields({ name: '', email: '', message: '' })
       } else {
         const data = await res.json().catch(() => ({}))
-        setGlobalError((data as { error?: string }).error ?? 'Une erreur est survenue.')
+        setGlobalError((data as { error?: string }).error ?? copy.errors.generic)
         setStatus('error')
       }
     } catch {
-      setGlobalError('Une erreur est survenue. Veuillez réessayer.')
+      setGlobalError(copy.errors.retry)
       setStatus('error')
     }
   }
@@ -87,8 +97,8 @@ export default function ContactForm() {
   if (status === 'success') {
     return (
       <div className="py-10">
-        <p className="text-accent font-medium text-base mb-2">Message envoyé !</p>
-        <p className="text-text-secondary text-sm">Je vous répondrai dans les plus brefs délais.</p>
+        <p className="text-accent font-medium text-base mb-2">{copy.successTitle}</p>
+        <p className="text-text-secondary text-sm">{copy.successMessage}</p>
       </div>
     )
   }
@@ -99,7 +109,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-white mb-1.5">
-          Nom
+          {copy.name}
         </label>
         <input
           id="name"
@@ -107,7 +117,7 @@ export default function ContactForm() {
           type="text"
           value={fields.name}
           onChange={handleChange}
-          placeholder="Votre nom"
+          placeholder={copy.namePlaceholder}
           disabled={isLoading}
           className={inputClass('name')}
         />
@@ -116,7 +126,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-white mb-1.5">
-          Email
+          {copy.email}
         </label>
         <input
           id="email"
@@ -124,7 +134,7 @@ export default function ContactForm() {
           type="email"
           value={fields.email}
           onChange={handleChange}
-          placeholder="votre@email.com"
+          placeholder={copy.emailPlaceholder}
           disabled={isLoading}
           className={inputClass('email')}
         />
@@ -133,7 +143,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-white mb-1.5">
-          Message
+          {copy.message}
         </label>
         <textarea
           id="message"
@@ -141,7 +151,7 @@ export default function ContactForm() {
           rows={6}
           value={fields.message}
           onChange={handleChange}
-          placeholder="Votre message..."
+          placeholder={copy.messagePlaceholder}
           disabled={isLoading}
           className={`${inputClass('message')} resize-none`}
         />
@@ -151,7 +161,7 @@ export default function ContactForm() {
       {globalError && <p className="text-sm text-red-400">{globalError}</p>}
 
       <Button
-        label={isLoading ? 'Envoi en cours…' : 'Envoyer'}
+        label={isLoading ? copy.submitting : copy.submit}
         variant="primary"
         type="submit"
         icon={isLoading ? undefined : 'send'}

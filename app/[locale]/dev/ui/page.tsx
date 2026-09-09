@@ -12,7 +12,7 @@ import TechLogoIcon from '@/components/ui/TechLogoIcon'
 import ProjectCard from '@/components/projects/ProjectCard'
 import ProjectImage from '@/components/projects/ProjectImage'
 import SkillCard from '@/components/skills/SkillCard'
-import { defaultLocale } from '@/lib/i18n'
+import { defaultLocale, getDictionary } from '@/lib/i18n'
 import { getProjects } from '@/lib/projects'
 import { skills } from '@/data/skills'
 import { contact } from '@/data/contact'
@@ -171,7 +171,11 @@ export default function DevUIPage() {
 
       {/* CopyEmailButton */}
       <PreviewSection title="CopyEmailButton">
-        <CopyEmailButton email={contact.email} />
+        <CopyEmailButton
+          email={contact.email}
+          label={getDictionary(defaultLocale).contact.copyEmail}
+          copiedLabel={getDictionary(defaultLocale).contact.copied}
+        />
       </PreviewSection>
     </div>
   )
