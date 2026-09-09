@@ -11,7 +11,7 @@ import ProjectLinks from '@/components/projects/ProjectLinks'
 import Icon from '@/components/ui/Icon'
 
 type Props = {
-  params: Promise<{ slug: string }>
+  params: Promise<{ locale: string; slug: string }>
 }
 
 export function generateStaticParams() {
