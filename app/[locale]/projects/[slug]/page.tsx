@@ -14,6 +14,9 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>
 }
 
+/** Un slug inconnu n'est pas rendu à la demande : il tombe sur la 404 globale du site. */
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
 }

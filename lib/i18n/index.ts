@@ -1,3 +1,3 @@
-export { locales, defaultLocale, isLocale } from './locales'
+export { locales, defaultLocale, isLocale, resolveLocale } from './locales'
 export { localizePath, stripLocale } from './routing'
 export { getDictionary } from './dictionaries'
