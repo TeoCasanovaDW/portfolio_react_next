@@ -52,6 +52,42 @@ export type ProjectFeature = {
   icon: IconName
 }
 
+/** Lien projet sans son libellé : la partie non traduite d'un lien. */
+export type ProjectLinkBase = Omit<ProjectLink, 'label'>
+
+/**
+ * Partie non traduite d'un projet : identité, média, liens, stack et icônes.
+ * Partagée par les deux langues.
+ */
+export type ProjectBase = {
+  slug: string
+  name: string
+  year: string
+  image: string
+  links: readonly ProjectLinkBase[]
+  techLogos: readonly TechLogo[]
+  stack: readonly string[]
+  featureIcons: readonly IconName[]
+}
+
+/**
+ * Partie traduite d'un projet.
+ * `linkLabels` et `featureLabels` suivent l'ordre de `links` et `featureIcons` de la base.
+ */
+export type ProjectContent = {
+  type: string
+  shortDescription: string
+  description: string
+  tags: string[]
+  linkLabels: string[]
+  context: string
+  technicalChoices: string[]
+  featureLabels: string[]
+  demonstrates: string[]
+  limits: string[]
+}
+
+/** Projet résolu dans une locale, tel que consommé par les composants. */
 export type Project = {
   slug: string
   name: string

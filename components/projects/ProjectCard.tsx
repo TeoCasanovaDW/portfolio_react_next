@@ -7,14 +7,16 @@ import ProjectLinks from '@/components/projects/ProjectLinks'
 
 type Props = {
   project: Project
+  /** Chemin de la page détail, déjà préfixé par la locale courante. */
+  href: string
 }
 
-export default function ProjectCard({ project }: Props) {
+export default function ProjectCard({ project, href }: Props) {
   return (
     <article className="bg-surface rounded-2xl border border-[#e5e5e5]/20 overflow-hidden hover:border-[#e5e5e5]/30 transition-colors duration-200">
 
       <div className="relative">
-        <Link href={`/projects/${project.slug}`} tabIndex={-1} aria-hidden>
+        <Link href={href} tabIndex={-1} aria-hidden>
           <ProjectImage src={project.image} alt={project.name} />
         </Link>
         {project.slug === 'ai-model-radar' && (
@@ -40,7 +42,7 @@ export default function ProjectCard({ project }: Props) {
         </div>
 
         <div>
-          <Link href={`/projects/${project.slug}`}>
+          <Link href={href}>
             <h3 className="font-heading text-xl font-semibold text-white hover:text-accent transition-colors duration-150">
               {project.name}
             </h3>

@@ -12,7 +12,8 @@ import TechLogoIcon from '@/components/ui/TechLogoIcon'
 import ProjectCard from '@/components/projects/ProjectCard'
 import ProjectImage from '@/components/projects/ProjectImage'
 import SkillCard from '@/components/skills/SkillCard'
-import { projects } from '@/data/projects'
+import { defaultLocale } from '@/lib/i18n'
+import { getProjects } from '@/lib/projects'
 import { skills } from '@/data/skills'
 import { contact } from '@/data/contact'
 
@@ -48,6 +49,8 @@ const skillsSample = skills.filter((s) =>
 )
 
 export default function DevUIPage() {
+  const projects = getProjects(defaultLocale)
+
   return (
     <div className="max-w-[1200px] mx-auto px-6 py-16">
       <div className="mb-16 p-4 rounded-xl border border-accent/30 bg-accent/5">
@@ -152,7 +155,7 @@ export default function DevUIPage() {
       <PreviewSection title="ProjectCard">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <ProjectCard key={project.slug} project={project} href={`/projects/${project.slug}`} />
           ))}
         </div>
       </PreviewSection>

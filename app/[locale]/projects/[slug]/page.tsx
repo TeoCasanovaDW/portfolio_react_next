@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import { projects } from '@/data/projects'
 import Button from '@/components/ui/Button'
 import Badge from '@/components/ui/Badge'
 import ProjectImage from '@/components/projects/ProjectImage'
@@ -9,6 +8,8 @@ import IconBadge from '@/components/ui/IconBadge'
 import ProjectDetailList from '@/components/projects/ProjectDetailList'
 import ProjectLinks from '@/components/projects/ProjectLinks'
 import Icon from '@/components/ui/Icon'
+import { getDictionary, localizePath, resolveLocale } from '@/lib/i18n'
+import { getProject, projectSlugs } from '@/lib/projects'
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>
@@ -18,12 +19,14 @@ type Props = {
 export const dynamicParams = false
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }))
+  return projectSlugs.map((slug) => ({ slug }))
 }
 
 export default async function ProjectPage({ params }: Props) {
-  const { slug } = await params
-  const project = projects.find((p) => p.slug === slug)
+  const { locale: rawLocale, slug } = await params
+  const locale = resolveLocale(rawLocale)
+  const { cta, project: labels } = getDictionary(locale)
+  const project = getProject(slug, locale)
 
   if (!project) notFound()
 
@@ -34,7 +37,7 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* Retour */}
       <div className="mb-14">
-        <Button label="Retour aux projets" variant="dark" icon="arrowLeft" iconPosition="left" href="/projects" />
+        <Button label={cta.backToProjects} variant="dark" icon="arrowLeft" iconPosition="left" href={localizePath('/projects', locale)} />
       </div>
 
       {/* Titre + description — 2 colonnes desktop */}
@@ -86,7 +89,7 @@ export default async function ProjectPage({ params }: Props) {
       <div className="space-y-16">
 
         <section>
-          <SectionTitle title="Contexte" />
+          <SectionTitle title={labels.context} />
           <p className="text-text-secondary text-base leading-relaxed">{project.context}</p>
         </section>
 
@@ -95,7 +98,7 @@ export default async function ProjectPage({ params }: Props) {
           <div className="bg-surface border border-white/10 rounded-2xl p-8 md:p-10">
             <div className="flex flex-col md:flex-row md:items-start md:gap-12">
               <h2 className="font-heading text-xl font-semibold text-white mb-5 md:mb-0 md:w-40 shrink-0">
-                Stack
+                {labels.stack}
               </h2>
               <div className="flex flex-wrap gap-2">
                 {project.stack.map((item) => (
@@ -107,12 +110,12 @@ export default async function ProjectPage({ params }: Props) {
         </section>
 
         <section>
-          <SectionTitle title="Choix techniques" />
+          <SectionTitle title={labels.technicalChoices} />
           <ProjectDetailList items={project.technicalChoices} />
         </section>
 
         <section>
-          <SectionTitle title="Fonctionnalités" />
+          <SectionTitle title={labels.features} />
           <div className="flex flex-wrap gap-2">
             {project.features.map((feature) => (
               <IconBadge key={feature.label} label={feature.label} icon={feature.icon} />
@@ -121,12 +124,12 @@ export default async function ProjectPage({ params }: Props) {
         </section>
 
         <section>
-          <SectionTitle title="Ce que ce projet démontre" />
+          <SectionTitle title={labels.demonstrates} />
           <ProjectDetailList items={project.demonstrates} />
         </section>
 
         <section>
-          <SectionTitle title="Limites actuelles" />
+          <SectionTitle title={labels.limits} />
           <ProjectDetailList items={project.limits} />
         </section>
 
@@ -134,8 +137,8 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* CTA bas */}
       <div className="flex flex-col sm:flex-row sm:justify-between gap-3 mt-20">
-        <Button label="Retour aux projets" variant="dark" icon="arrowLeft" iconPosition="left" href="/projects" />
-        <Button label="Me contacter" variant="primary" icon="arrowRight" href="/contact" />
+        <Button label={cta.backToProjects} variant="dark" icon="arrowLeft" iconPosition="left" href={localizePath('/projects', locale)} />
+        <Button label={cta.contactMe} variant="primary" icon="arrowRight" href={localizePath('/contact', locale)} />
       </div>
 
     </div>

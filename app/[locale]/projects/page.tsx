@@ -1,27 +1,30 @@
-import { projects } from '@/data/projects'
 import ProjectCard from '@/components/projects/ProjectCard'
+import { getDictionary, localizePath, resolveLocale } from '@/lib/i18n'
+import { getProjects } from '@/lib/projects'
 
-export default function ProjectsPage() {
+type Props = {
+  params: Promise<{ locale: string }>
+}
+
+export default async function ProjectsPage({ params }: Props) {
+  const locale = resolveLocale((await params).locale)
+  const { projects: copy } = getDictionary(locale)
+  const projects = getProjects(locale)
+
   return (
     <div className="max-w-[1200px] mx-auto px-6 py-16">
 
       {/* Titre + introduction */}
       <div className="mb-30">
         <h1 className="font-heading text-4xl md:text-5xl font-semibold text-white mb-20">
-          Projets<span className="text-accent">.</span>
+          {copy.title}<span className="text-accent">.</span>
         </h1>
         <div className="space-y-4">
-          <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-            Voici une sélection de projets alignés avec mon objectif actuel : concevoir et
-            développer des applications web modernes avec React, Next.js, TypeScript, API et
-            données.
-          </p>
-          <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-            Ces projets ne représentent pas l&apos;ensemble de mon parcours. J&apos;ai également
-            travaillé sur d&apos;autres projets web, notamment sur des stacks plus anciennes ou
-            différentes, mais j&apos;ai choisi de mettre ici en avant ceux qui reflètent le mieux
-            mon positionnement actuel.
-          </p>
+          {copy.paragraphs.map((paragraph) => (
+            <p key={paragraph} className="text-text-secondary text-base md:text-lg leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
         </div>
       </div>
 
@@ -29,7 +32,11 @@ export default function ProjectsPage() {
       <section>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              href={localizePath(`/projects/${project.slug}`, locale)}
+            />
           ))}
         </div>
       </section>

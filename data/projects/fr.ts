@@ -1,109 +1,19 @@
-import type { Project } from '@/types/project'
+import type { ProjectSlug } from './base'
+import type { ProjectContent } from '@/types/project'
 
-export const projects: Project[] = [
-  // {
-  //   slug: 'abricot',
-  //   name: 'Abricot',
-  //   year: '2026',
-  //   type: 'Application web Next.js / SaaS de gestion de projet',
-  //   shortDescription:
-  //     'Application collaborative pour gérer des projets, des tâches, des contributeurs et générer des tâches avec l’aide de l’IA.',
-  //   description:
-  //     'Application Next.js de gestion de projet permettant de créer des projets, organiser les tâches, gérer les contributeurs et générer des brouillons de tâches avec Mistral.',
-  //   image: '/images/projects/abricot.png',
-  //   links: [
-  //     {
-  //       label: 'GitHub',
-  //       href: 'https://github.com/TeoCasanovaDW/ABRICOT',
-  //       icon: 'github',
-  //       variant: 'dark',
-  //     },
-  //   ],
-  //   tags: ['Full-Stack', 'SaaS', 'IA'],
-  //   techLogos: ['next', 'typescript', 'react', 'auth', 'mistral'],
-  //   stack: [
-  //     'Next.js App Router',
-  //     'TypeScript',
-  //     'React',
-  //     'React Hook Form',
-  //     'Zod',
-  //     'CSS Modules',
-  //     'Mistral API',
-  //     'Express API',
-  //   ],
-  //   context:
-  //     "Projet réalisé dans le cadre du parcours OpenClassrooms. L'objectif était de développer l'ensemble du frontend d'un SaaS collaboratif à partir d'une API Express existante.",
-  //   technicalChoices: [
-  //     'Next.js App Router pour séparer le chargement serveur des interactions côté client',
-  //     'Route Handlers pour sécuriser les échanges entre le navigateur et l’API Express',
-  //     'React Hook Form et Zod pour gérer et valider les formulaires',
-  //     'TypeScript pour typer précisément les différentes réponses de l’API',
-  //     'Mistral côté serveur pour générer des brouillons de tâches validés avant création',
-  //   ],
-  //   features: [
-  //     { label: 'Gestion des projets', icon: 'dashboard' },
-  //     { label: 'Gestion des tâches', icon: 'route' },
-  //     { label: 'Contributeurs', icon: 'auth' },
-  //     { label: 'Vue Liste / Kanban', icon: 'monitoring' },
-  //     { label: 'Génération par IA', icon: 'api' },
-  //     { label: 'Authentification JWT', icon: 'auth' },
-  //     { label: 'Interface responsive', icon: 'dashboard' },
-  //   ],
-  //   demonstrates: [
-  //     "Développement d'un frontend Next.js complet à partir d'une API existante",
-  //     'Gestion de formulaires complexes avec React Hook Form et Zod',
-  //     'Intégration sécurisée d’un LLM avec validation des réponses',
-  //     'Gestion des permissions, erreurs et sauvegardes partielles',
-  //     'Mise en place d’une interface responsive et accessible',
-  //   ],
-  //   limits: [
-  //     'Backend fourni et amélioré dans le cadre du projet',
-  //     'Création des tâches IA réalisée séquentiellement sans endpoint de création en masse',
-  //     'Certaines limites du backend sont compensées côté frontend',
-  //   ],
-  // },
-  {
-    slug: 'abricot',
-    name: 'Abricot',
-    year: '2026',
+/**
+ * Contenus projets en français, repris du contenu existant.
+ * `linkLabels` et `featureLabels` suivent l'ordre déclaré dans `base.ts`.
+ */
+export const frProjects: Record<ProjectSlug, ProjectContent> = {
+  abricot: {
     type: 'Application web Next.js / SaaS de gestion de projet',
     shortDescription:
       'Application collaborative pour gérer des projets, des tâches, des contributeurs et générer des tâches avec l’aide de l’IA.',
     description:
       'Application Next.js de gestion de projet permettant de créer des projets, organiser les tâches, gérer les contributeurs et générer des brouillons de tâches avec Mistral.',
-    image: '/images/projects/abricot.png',
-    links: [
-      {
-        label: 'Voir le site',
-        href: 'https://abricot-front.vercel.app/',
-        icon: 'link',
-        variant: 'primary',
-      },
-      {
-        label: 'GitHub',
-        href: 'https://github.com/TeoCasanovaDW/ABRICOT',
-        icon: 'github',
-        variant: 'dark',
-      },
-    ],
     tags: ['Full-Stack', 'SaaS', 'IA'],
-    techLogos: ['next', 'typescript', 'auth', 'mistral', 'docker', 'cypress'],
-    stack: [
-      'Next.js App Router',
-      'TypeScript',
-      'React',
-      'React Hook Form',
-      'Zod',
-      'CSS Modules',
-      'Express',
-      'Prisma',
-      'PostgreSQL / Supabase',
-      'Mistral API',
-      'Docker',
-      'Vitest / RTL',
-      'Cypress',
-      'GitHub Actions',
-    ],
+    linkLabels: ['Voir le site', 'GitHub'],
     context:
       "Projet réalisé dans le cadre du parcours OpenClassrooms. L'objectif était de développer le frontend d'un SaaS collaboratif à partir d'une API Express existante, puis d'en améliorer l'environnement technique et la qualité.",
     technicalChoices: [
@@ -116,14 +26,14 @@ export const projects: Project[] = [
       'Vitest, RTL et Cypress pour couvrir les comportements métier et parcours critiques',
       'GitHub Actions pour automatiser lint, typecheck, tests et builds',
     ],
-    features: [
-      { label: 'Gestion des projets', icon: 'dashboard' },
-      { label: 'Gestion des tâches', icon: 'route' },
-      { label: 'Contributeurs', icon: 'auth' },
-      { label: 'Vue Liste / Kanban', icon: 'monitoring' },
-      { label: 'Génération par IA', icon: 'api' },
-      { label: 'Authentification JWT', icon: 'auth' },
-      { label: 'Interface responsive', icon: 'dashboard' },
+    featureLabels: [
+      'Gestion des projets',
+      'Gestion des tâches',
+      'Contributeurs',
+      'Vue Liste / Kanban',
+      'Génération par IA',
+      'Authentification JWT',
+      'Interface responsive',
     ],
     demonstrates: [
       "Développement d'un frontend Next.js complet connecté à une API Express",
@@ -140,35 +50,15 @@ export const projects: Project[] = [
       'Couverture de tests volontairement ciblée sur les parcours et logiques critiques',
     ],
   },
-  {
-    slug: 'portfolio',
-    name: 'Portfolio',
-    year: '2026',
+
+  portfolio: {
     type: 'Application web Next.js / Portfolio développeur',
     shortDescription:
       'Portfolio personnel conçu pour présenter mon profil, mes projets et mon positionnement de développeur React / Next.js.',
     description:
       'Application Next.js développée pour présenter mon parcours, mes compétences et mes projets à travers une interface responsive, sobre et maintenable.',
-    image: '/images/projects/portfolio.png',
-    links: [
-      {
-        label: 'GitHub',
-        href: 'https://github.com/TeoCasanovaDW/portfolio_react_next',
-        icon: 'github',
-        variant: 'dark',
-      },
-    ],
     tags: ['Front-End', 'Next.js', 'Portfolio'],
-    techLogos: ['next', 'typescript', 'react', 'vercel', 'figma'],
-    stack: [
-      'Next.js App Router',
-      'TypeScript',
-      'React',
-      'Tailwind CSS',
-      'Resend',
-      'Vercel',
-      'Figma',
-    ],
+    linkLabels: ['GitHub'],
     context:
       'Projet personnel réalisé pour construire un portfolio cohérent avec mon objectif professionnel : devenir développeur React / Next.js sur des applications web modernes.',
     technicalChoices: [
@@ -178,12 +68,12 @@ export const projects: Project[] = [
       'Données locales typées pour gérer les projets, compétences et liens',
       'Resend pour rendre le formulaire de contact fonctionnel',
     ],
-    features: [
-      { label: 'Design responsive', icon: 'dashboard' },
-      { label: 'Pages dynamiques', icon: 'route' },
-      { label: 'Données typées', icon: 'api' },
-      { label: 'Formulaire contact', icon: 'api' },
-      { label: 'Email copiable', icon: 'copyLight' },
+    featureLabels: [
+      'Design responsive',
+      'Pages dynamiques',
+      'Données typées',
+      'Formulaire contact',
+      'Email copiable',
     ],
     demonstrates: [
       'Conception complète d’un portfolio de développeur',
@@ -198,35 +88,15 @@ export const projects: Project[] = [
       'Pas de light mode en V1',
     ],
   },
-  {
-    slug: 'ai-model-radar',
-    name: 'AI Model Radar',
-    year: '2026',
+
+  'ai-model-radar': {
     type: 'Application web Next.js / Dashboard data IA',
     shortDescription:
       'Application data pour centraliser, historiser et comparer les modèles IA disponibles via OpenRouter.',
     description:
       'Application Next.js permettant de synchroniser les modèles OpenRouter, les stocker dans Supabase et suivre leur évolution via un dashboard, des filtres et des graphiques.',
-    image: '/images/projects/ai-model-radar.png',
-    links: [
-      {
-        label: 'GitHub',
-        href: 'https://github.com/TeoCasanovaDW/ai-radar',
-        icon: 'github',
-        variant: 'dark',
-      },
-    ],
     tags: ['Full-Stack', 'Data', 'API'],
-    techLogos: ['typescript', 'next', 'supabase', 'postgresql', 'vercel'],
-    stack: [
-      'Next.js App Router',
-      'TypeScript',
-      'Tailwind CSS',
-      'shadcn/ui',
-      'Supabase PostgreSQL',
-      'OpenRouter API',
-      'Vercel Cron',
-    ],
+    linkLabels: ['GitHub'],
     context:
       "Projet portfolio visant à construire une application data complète autour des modèles IA d'OpenRouter, avec synchronisation automatique, historique et interface d'exploration.",
     technicalChoices: [
@@ -236,14 +106,14 @@ export const projects: Project[] = [
       'Vercel Cron pour automatiser la synchronisation quotidienne',
       'TypeScript pour fiabiliser la manipulation des données',
     ],
-    features: [
-      { label: 'Sync quotidienne', icon: 'sync' },
-      { label: 'Snapshots historiques', icon: 'history' },
-      { label: 'Recherche et filtres', icon: 'filter' },
-      { label: 'Pages détail modèle', icon: 'route' },
-      { label: 'Dashboard data', icon: 'dashboard' },
-      { label: "Graphiques d'évolution", icon: 'monitoring' },
-      { label: 'Filtres persistants', icon: 'link' },
+    featureLabels: [
+      'Sync quotidienne',
+      'Snapshots historiques',
+      'Recherche et filtres',
+      'Pages détail modèle',
+      'Dashboard data',
+      "Graphiques d'évolution",
+      'Filtres persistants',
     ],
     demonstrates: [
       'Développement full-stack avec Next.js et TypeScript',
@@ -258,27 +128,15 @@ export const projects: Project[] = [
       'Pas de fonctionnalités collaboratives ou temps réel',
     ],
   },
-  {
-    slug: 'sportsee',
-    name: 'SportSee',
-    year: '2026',
+
+  sportsee: {
     type: 'Application web React / Dashboard sportif',
     shortDescription:
       'Application React de dashboard sportif connectée à une API locale avec authentification, routes protégées et graphiques dynamiques.',
     description:
       'Application React de dashboard sportif permettant à un utilisateur de consulter son profil, ses performances et ses statistiques à travers une interface dynamique connectée à une API locale.',
-    image: '/images/projects/sportsee.png',
-    links: [
-      {
-        label: 'GitHub',
-        href: 'https://github.com/TeoCasanovaDW/sportsee',
-        icon: 'github',
-        variant: 'dark',
-      },
-    ],
     tags: ['Front-End', 'API', 'Auth'],
-    techLogos: ['javascript', 'react', 'auth', 'vercel'],
-    stack: ['React 18', 'React Router 6', 'Context API', 'Fetch API', 'Recharts', 'Vite', 'CSS'],
+    linkLabels: ['GitHub'],
     context:
       "Projet réalisé dans le cadre du parcours OpenClassrooms. L'objectif était de transformer une maquette HTML/CSS existante en application React fonctionnelle, avec authentification JWT, routes protégées et données dynamiques.",
     technicalChoices: [
@@ -288,14 +146,14 @@ export const projects: Project[] = [
       "Fetch API pour récupérer les données depuis l'API locale",
       'Recharts pour afficher les statistiques sportives sous forme de graphiques dynamiques',
     ],
-    features: [
-      { label: 'Authentification JWT', icon: 'auth' },
-      { label: 'Routes protégées', icon: 'route' },
-      { label: 'Dashboard personnalisé', icon: 'dashboard' },
-      { label: 'Graphiques dynamiques', icon: 'chart' },
-      { label: 'Appels API', icon: 'api' },
-      { label: 'États loading/error', icon: 'loading' },
-      { label: 'Déconnexion', icon: 'logout' },
+    featureLabels: [
+      'Authentification JWT',
+      'Routes protégées',
+      'Dashboard personnalisé',
+      'Graphiques dynamiques',
+      'Appels API',
+      'États loading/error',
+      'Déconnexion',
     ],
     demonstrates: [
       "Intégration d'une maquette existante dans une application React structurée",
@@ -311,4 +169,4 @@ export const projects: Project[] = [
       "Projet principalement centré sur l'intégration et la logique front-end",
     ],
   },
-]
+}
