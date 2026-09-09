@@ -1,9 +1,13 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { defaultLocale, isLocale, localizePath, stripLocale } from '@/lib/i18n'
+import {
+  LOCALE_COOKIE,
+  LOCALE_COOKIE_MAX_AGE,
+  defaultLocale,
+  isLocale,
+  localizePath,
+  stripLocale,
+} from '@/lib/i18n'
 import type { Locale } from '@/types/i18n'
-
-const LOCALE_COOKIE = 'NEXT_LOCALE'
-const COOKIE_MAX_AGE = 60 * 60 * 24 * 365
 
 /** Transmet la locale résolue aux Server Components qui ne reçoivent pas `params`. */
 function withLocaleHeader(request: NextRequest, locale: Locale) {
@@ -25,7 +29,7 @@ export function proxy(request: NextRequest) {
     const response = NextResponse.redirect(url, 307)
     response.cookies.set(LOCALE_COOKIE, defaultLocale, {
       path: '/',
-      maxAge: COOKIE_MAX_AGE,
+      maxAge: LOCALE_COOKIE_MAX_AGE,
       sameSite: 'lax',
     })
 

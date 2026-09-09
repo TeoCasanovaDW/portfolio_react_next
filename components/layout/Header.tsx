@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
+import LanguageSwitcher from '@/components/layout/LanguageSwitcher'
 import { localizePath, stripLocale } from '@/lib/i18n/routing'
 import type { Dictionary, Locale } from '@/types/i18n'
 import type { NavigationItem } from '@/types/navigation'
@@ -29,39 +30,44 @@ export default function Header({ locale, items, nav }: Props) {
           <Image src="/logo.svg" width={36} height={36} alt="Téo Casanova" />
         </Link>
 
-        {/* Desktop navigation */}
-        <nav aria-label={nav.mainLabel} className="hidden md:flex items-center gap-8">
-          {items.map((item) => (
-            <Link
-              key={item.href}
-              href={localizePath(item.href, locale)}
-              className={`text-sm font-medium transition-colors duration-150 hover:text-white ${
-                currentPath === item.href ? 'text-white' : 'text-text-secondary'
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex items-center gap-4 md:gap-8">
+          {/* Desktop navigation */}
+          <nav aria-label={nav.mainLabel} className="hidden md:flex items-center gap-8">
+            {items.map((item) => (
+              <Link
+                key={item.href}
+                href={localizePath(item.href, locale)}
+                className={`text-sm font-medium transition-colors duration-150 hover:text-white ${
+                  currentPath === item.href ? 'text-white' : 'text-text-secondary'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-        {/* Mobile burger */}
-        <button
-          className="md:hidden flex items-center justify-center w-10 h-10 text-text-secondary hover:text-white transition-colors duration-150"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label={menuOpen ? nav.closeMenu : nav.openMenu}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-        >
-          {menuOpen ? (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          ) : (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          )}
-        </button>
+          {/* Fin de navigation desktop, à gauche du burger sur mobile */}
+          <LanguageSwitcher locale={locale} label={nav.languageLabel} onNavigate={closeMenu} />
+
+          {/* Mobile burger */}
+          <button
+            className="md:hidden flex items-center justify-center w-10 h-10 text-text-secondary hover:text-white transition-colors duration-150"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? nav.closeMenu : nav.openMenu}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+          >
+            {menuOpen ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
