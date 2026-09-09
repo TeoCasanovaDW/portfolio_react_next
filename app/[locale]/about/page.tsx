@@ -1,11 +1,20 @@
+import type { Metadata } from 'next'
 import SkillCategoryCard from '@/components/skills/SkillCategoryCard'
 import SectionTitle from '@/components/ui/SectionTitle'
 import Button from '@/components/ui/Button'
 import { getDictionary, localizePath, resolveLocale } from '@/lib/i18n'
 import { getSkills, skillCategories } from '@/lib/skills'
+import { localeAlternates } from '@/lib/site'
 
 type Props = {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = resolveLocale((await params).locale)
+  const { metadata } = getDictionary(locale)
+
+  return { ...metadata.about, alternates: localeAlternates('/about', locale) }
 }
 
 export default async function AboutPage({ params }: Props) {

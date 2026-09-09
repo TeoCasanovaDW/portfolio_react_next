@@ -1,11 +1,20 @@
+import type { Metadata } from 'next'
 import { contact as contactInfo } from '@/data/contact'
 import ContactForm from '@/components/contact/ContactForm'
 import CopyEmailButton from '@/components/ui/CopyEmailButton'
 import SocialButton from '@/components/ui/SocialButton'
 import { getDictionary, resolveLocale } from '@/lib/i18n'
+import { localeAlternates } from '@/lib/site'
 
 type Props = {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = resolveLocale((await params).locale)
+  const { metadata } = getDictionary(locale)
+
+  return { ...metadata.contact, alternates: localeAlternates('/contact', locale) }
 }
 
 export default async function ContactPage({ params }: Props) {

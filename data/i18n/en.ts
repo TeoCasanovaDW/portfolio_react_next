@@ -23,6 +23,10 @@ export const en = {
       title: 'Contact | Téo Casanova',
       description: 'Get in touch with Téo Casanova about an opportunity, a project or his profile.',
     },
+    /** Page détail projet : `{name}` est remplacé par le nom du projet. */
+    project: {
+      title: '{name} | Téo Casanova',
+    },
     notFound: {
       title: 'Page not found | Téo Casanova',
       description: 'This page does not exist or has been moved.',

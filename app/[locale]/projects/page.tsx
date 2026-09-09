@@ -1,9 +1,18 @@
+import type { Metadata } from 'next'
 import ProjectCard from '@/components/projects/ProjectCard'
 import { getDictionary, localizePath, resolveLocale } from '@/lib/i18n'
 import { getProjects } from '@/lib/projects'
+import { localeAlternates } from '@/lib/site'
 
 type Props = {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = resolveLocale((await params).locale)
+  const { metadata } = getDictionary(locale)
+
+  return { ...metadata.projects, alternates: localeAlternates('/projects', locale) }
 }
 
 export default async function ProjectsPage({ params }: Props) {

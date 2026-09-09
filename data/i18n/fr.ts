@@ -23,6 +23,9 @@ export const fr: Dictionary = {
       description:
         "Contacter Téo Casanova à propos d'une opportunité, d'un projet ou de son profil.",
     },
+    project: {
+      title: '{name} | Téo Casanova',
+    },
     notFound: {
       title: 'Page introuvable | Téo Casanova',
       description: "Cette page n'existe pas ou a été déplacée.",

@@ -1,10 +1,19 @@
+import type { Metadata } from 'next'
 import Button from '@/components/ui/Button'
 import Icon from '@/components/ui/Icon'
 import { contact } from '@/data/contact'
 import { getDictionary, localizePath, resolveLocale } from '@/lib/i18n'
+import { localeAlternates } from '@/lib/site'
 
 type Props = {
   params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = resolveLocale((await params).locale)
+  const { metadata } = getDictionary(locale)
+
+  return { ...metadata.home, alternates: localeAlternates('/', locale) }
 }
 
 export default async function HomePage({ params }: Props) {
