@@ -114,6 +114,7 @@ export const en = {
 
   projects: {
     title: 'Projects',
+    workInProgress: 'Work in Progress',
     paragraphs: [
       'Here is a selection of projects aligned with my current goal: designing and building modern web applications with React, Next.js, TypeScript, APIs and data.',
       'These projects do not cover my whole background. I have also worked on other web projects, in particular on older or different stacks, but I chose to highlight the ones that best reflect where I stand today.',

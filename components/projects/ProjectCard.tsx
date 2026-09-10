@@ -9,9 +9,11 @@ type Props = {
   project: Project
   /** Chemin de la page détail, déjà préfixé par la locale courante. */
   href: string
+  /** Libellé du badge « en cours », déjà résolu dans la locale courante. */
+  workInProgressLabel: string
 }
 
-export default function ProjectCard({ project, href }: Props) {
+export default function ProjectCard({ project, href, workInProgressLabel }: Props) {
   return (
     <article className="bg-surface rounded-2xl border border-[#e5e5e5]/20 overflow-hidden hover:border-[#e5e5e5]/30 transition-colors duration-200">
 
@@ -22,7 +24,7 @@ export default function ProjectCard({ project, href }: Props) {
         {project.slug === 'ai-model-radar' && (
           <div className="absolute top-3 right-3 z-10 pointer-events-none">
             <Badge
-              label="Work in Progress"
+              label={workInProgressLabel}
               variant="overlay"
               icon={
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

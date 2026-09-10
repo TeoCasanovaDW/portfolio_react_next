@@ -113,6 +113,7 @@ export const fr: Dictionary = {
 
   projects: {
     title: 'Projets',
+    workInProgress: 'Work in Progress',
     paragraphs: [
       'Voici une sélection de projets alignés avec mon objectif actuel : concevoir et développer des applications web modernes avec React, Next.js, TypeScript, API et données.',
       "Ces projets ne représentent pas l'ensemble de mon parcours. J'ai également travaillé sur d'autres projets web, notamment sur des stacks plus anciennes ou différentes, mais j'ai choisi de mettre ici en avant ceux qui reflètent le mieux mon positionnement actuel.",

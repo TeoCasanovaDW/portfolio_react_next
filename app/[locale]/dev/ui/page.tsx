@@ -155,7 +155,12 @@ export default function DevUIPage() {
       <PreviewSection title="ProjectCard">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} href={`/projects/${project.slug}`} />
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              href={`/projects/${project.slug}`}
+              workInProgressLabel={getDictionary(defaultLocale).projects.workInProgress}
+            />
           ))}
         </div>
       </PreviewSection>

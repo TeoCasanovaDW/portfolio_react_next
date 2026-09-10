@@ -45,6 +45,7 @@ export default async function ProjectsPage({ params }: Props) {
               key={project.slug}
               project={project}
               href={localizePath(`/projects/${project.slug}`, locale)}
+              workInProgressLabel={copy.workInProgress}
             />
           ))}
         </div>
