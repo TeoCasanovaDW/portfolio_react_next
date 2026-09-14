@@ -6,6 +6,52 @@ import type { ProjectContent } from '@/types/project'
  * `linkLabels` et `featureLabels` suivent l'ordre déclaré dans `base.ts`.
  */
 export const enProjects: Record<ProjectSlug, ProjectContent> = {
+  kasa: {
+    type: 'Next.js web app / Housing rental platform',
+    shortDescription:
+      'Full-stack peer-to-peer rental platform with authentication, favorites, messaging, listing creation and account management.',
+    description:
+      'Next.js rental application to browse and publish housing listings, keep favorites, talk to owners and manage an account, through a responsive interface connected to an Express API.',
+    tags: ['Full-Stack', 'Next.js', 'Marketplace'],
+    linkLabels: ['View site', 'GitHub'],
+    context:
+      'Project built as part of the OpenClassrooms program, then taken further than its original scope. The goal was to build a complete rental application from mockups, integrating an existing Express API before adapting it to the feature and deployment needs.',
+    technicalChoices: [
+      'Next.js App Router with Server Components for server-side rendering, and client components only where interaction is required',
+      'Server Actions to centralize sensitive writes without exposing the Express API directly to the browser',
+      'Express API with JWT authentication and client, owner and admin roles',
+      'SQLite to persist accounts, properties, messages and business data',
+      'Upload handling for property photos and user avatars',
+      'Context API and localStorage to manage favorites without adding backend complexity',
+      'Vitest and React Testing Library to cover critical behaviors and components',
+      'Netlify for the Next.js frontend and Railway with a persistent volume for the backend, SQLite and uploads',
+    ],
+    featureLabels: [
+      'JWT authentication',
+      'Listing creation',
+      'Messaging',
+      'Favorites',
+      'Profile management',
+      'Image uploads',
+      'SEO & accessibility',
+      'Responsive design',
+    ],
+    demonstrates: [
+      'Building a full-stack Next.js application connected to an Express API',
+      'Handling authentication, roles and protected routes',
+      'Designing Server Actions to secure exchanges with the backend',
+      'Implementing user-to-user messaging',
+      'Complete handling of forms, validation and file uploads',
+      'Building accessible, responsive interfaces from provided mockups',
+      'Setting up automated tests on critical flows and logic',
+      'Deploying a separate frontend and backend architecture with persistent storage',
+    ],
+    limits: [
+      'Backend initially provided, then extended for the needs of the project and its deployment',
+      'SQLite suited to the demo and scope of this project rather than to heavy production load',
+      'Uploads go through Server Actions and remain subject to the request size limits of the Netlify platform',
+    ],
+  },
   abricot: {
     type: 'Next.js web app / Project management SaaS',
     shortDescription:

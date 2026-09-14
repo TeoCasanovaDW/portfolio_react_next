@@ -6,6 +6,52 @@ import type { ProjectContent } from '@/types/project'
  * `linkLabels` et `featureLabels` suivent l'ordre déclaré dans `base.ts`.
  */
 export const frProjects: Record<ProjectSlug, ProjectContent> = {
+  kasa: {
+    type: 'Application web Next.js / Plateforme de location de logements',
+    shortDescription:
+      'Plateforme full-stack de location entre particuliers avec authentification, favoris, messagerie, création d’annonces et gestion de compte.',
+    description:
+      'Application Next.js de location de logements permettant de consulter et publier des annonces, gérer ses favoris, échanger avec les propriétaires et administrer son compte à travers une interface responsive connectée à une API Express.',
+    tags: ['Full-Stack', 'Next.js', 'Marketplace'],
+    linkLabels: ['Voir le site', 'GitHub'],
+    context:
+      "Projet réalisé dans le cadre du parcours OpenClassrooms puis approfondi au-delà du périmètre initial. L’objectif était de construire une application de location complète à partir de maquettes, en intégrant une API Express existante puis en l’adaptant pour les besoins fonctionnels et le déploiement.",
+    technicalChoices: [
+      'Next.js App Router avec Server Components pour le rendu serveur et composants clients uniquement pour les interactions',
+      'Server Actions pour centraliser les écritures sensibles sans exposer directement l’API Express au navigateur',
+      'API Express avec authentification JWT et gestion des rôles client, propriétaire et administrateur',
+      'SQLite pour la persistance des comptes, logements, messages et données métier',
+      'Système d’upload pour les photos de logements et les avatars utilisateurs',
+      'Context API et localStorage pour gérer les favoris sans complexifier le backend',
+      'Vitest et React Testing Library pour couvrir les comportements et composants critiques',
+      'Netlify pour le frontend Next.js et Railway avec volume persistant pour le backend, SQLite et les uploads',
+    ],
+    featureLabels: [
+      'Authentification JWT',
+      'Création d’annonces',
+      'Messagerie',
+      'Favoris',
+      'Gestion du profil',
+      'Uploads d’images',
+      'SEO & accessibilité',
+      'Responsive design',
+    ],
+    demonstrates: [
+      'Développement d’une application full-stack Next.js connectée à une API Express',
+      'Gestion de l’authentification, des rôles et des routes protégées',
+      'Conception de Server Actions pour sécuriser les échanges avec le backend',
+      'Mise en place d’une messagerie entre utilisateurs',
+      'Gestion complète de formulaires, validations et uploads de fichiers',
+      'Création d’interfaces accessibles et responsive à partir de maquettes',
+      'Mise en place de tests automatisés sur les parcours et logiques critiques',
+      'Déploiement d’une architecture frontend et backend séparée avec stockage persistant',
+    ],
+    limits: [
+      'Backend initialement fourni puis étendu pour les besoins du projet et du déploiement',
+      'Base SQLite adaptée à la démonstration et au périmètre du projet plutôt qu’à une forte montée en charge',
+      'Les uploads transitent par les Server Actions et restent soumis aux limites de taille de la plateforme Netlify',
+    ],
+  },
   abricot: {
     type: 'Application web Next.js / SaaS de gestion de projet',
     shortDescription:

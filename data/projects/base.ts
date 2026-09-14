@@ -2,9 +2,50 @@ import type { ProjectBase } from '@/types/project'
 
 /**
  * Base technique des projets, identique dans les deux langues.
- * L'ordre de ce tableau est l'ordre d'affichage : Abricot reste en première position.
+ * L'ordre de ce tableau est l'ordre d'affichage : Kasa reste en première position.
  */
 export const projectBases = [
+  {
+    slug: 'kasa',
+    name: 'Kasa',
+    year: '2026',
+    image: '/images/projects/kasa.png',
+    links: [
+      {
+        href: 'https://rentaplacekasa.netlify.app/',
+        icon: 'link',
+        variant: 'primary',
+      },
+      {
+        href: 'https://github.com/TeoCasanovaDW/KASA',
+        icon: 'github',
+        variant: 'dark',
+      },
+    ],
+    techLogos: ['next', 'typescript', 'react', 'node', 'auth', 'vitest'],
+    stack: [
+      'Next.js App Router',
+      'TypeScript',
+      'React',
+      'Tailwind CSS',
+      'Express',
+      'SQLite',
+      'JWT',
+      'Vitest / RTL',
+      'Netlify',
+      'Railway',
+    ],
+    featureIcons: [
+      'auth',
+      'copyLight',
+      'send',
+      'filter',
+      'logout',
+      'sync',
+      'monitoring',
+      'dashboard',
+    ],
+  },
   {
     slug: 'abricot',
     name: 'Abricot',

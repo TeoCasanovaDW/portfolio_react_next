@@ -75,7 +75,7 @@ describe('project catalogue', () => {
     for (const locale of locales) {
       expect(getProjects(locale).map((project) => project.slug)).toEqual(projectSlugs)
     }
-    expect(projectSlugs[0]).toBe('abricot')
+    expect(projectSlugs[0]).toBe('kasa')
   })
 
   it('keeps untranslated data identical across languages', () => {

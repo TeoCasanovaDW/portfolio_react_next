@@ -32,7 +32,7 @@ function resolveProject(base: ProjectBase, content: ProjectContent): Project {
   }
 }
 
-/** Projets résolus dans une locale, dans l'ordre de la base : Abricot en premier. */
+/** Projets résolus dans une locale, dans l'ordre de la base : Kasa en premier. */
 export function getProjects(locale: Locale): Project[] {
   const content = contents[locale]
 
