@@ -24,7 +24,7 @@ export const enProjects: Record<ProjectSlug, ProjectContent> = {
       'Upload handling for property photos and user avatars',
       'Context API and localStorage to manage favorites without adding backend complexity',
       'Vitest and React Testing Library to cover critical behaviors and components',
-      'Netlify for the Next.js frontend and Railway with a persistent volume for the backend, SQLite and uploads',
+      'Vercel for the Next.js frontend and Railway with a persistent volume for the backend, SQLite and uploads',
     ],
     featureLabels: [
       'JWT authentication',
@@ -49,7 +49,7 @@ export const enProjects: Record<ProjectSlug, ProjectContent> = {
     limits: [
       'Backend initially provided, then extended for the needs of the project and its deployment',
       'SQLite suited to the demo and scope of this project rather than to heavy production load',
-      'Uploads go through Server Actions and remain subject to the request size limits of the Netlify platform',
+      'Uploads go through Server Actions and remain subject to Vercel’s 4.5 MB request body limit',
     ],
   },
   abricot: {
