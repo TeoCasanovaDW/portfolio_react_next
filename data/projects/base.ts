@@ -12,7 +12,7 @@ export const projectBases = [
     image: '/images/projects/kasa.png',
     links: [
       {
-        href: 'https://rentaplacekasa.netlify.app/',
+        href: 'https://kasa-lime-rho.vercel.app/',
         icon: 'link',
         variant: 'primary',
       },
@@ -52,11 +52,6 @@ export const projectBases = [
     year: '2026',
     image: '/images/projects/abricot.png',
     links: [
-      {
-        href: 'https://abricot-front.vercel.app/',
-        icon: 'link',
-        variant: 'primary',
-      },
       {
         href: 'https://github.com/TeoCasanovaDW/ABRICOT',
         icon: 'github',

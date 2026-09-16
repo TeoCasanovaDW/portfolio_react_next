@@ -59,7 +59,7 @@ export const frProjects: Record<ProjectSlug, ProjectContent> = {
     description:
       'Application Next.js de gestion de projet permettant de créer des projets, organiser les tâches, gérer les contributeurs et générer des brouillons de tâches avec Mistral.',
     tags: ['Full-Stack', 'SaaS', 'IA'],
-    linkLabels: ['Voir le site', 'GitHub'],
+    linkLabels: ['GitHub'],
     context:
       "Projet réalisé dans le cadre du parcours OpenClassrooms. L'objectif était de développer le frontend d'un SaaS collaboratif à partir d'une API Express existante, puis d'en améliorer l'environnement technique et la qualité.",
     technicalChoices: [

@@ -59,7 +59,7 @@ export const enProjects: Record<ProjectSlug, ProjectContent> = {
     description:
       'Next.js project management app to create projects, organize tasks, manage contributors and generate task drafts with Mistral.',
     tags: ['Full-Stack', 'SaaS', 'AI'],
-    linkLabels: ['View site', 'GitHub'],
+    linkLabels: ['GitHub'],
     context:
       'Project built as part of the OpenClassrooms program. The goal was to develop the frontend of a collaborative SaaS on top of an existing Express API, then improve its technical environment and quality.',
     technicalChoices: [
