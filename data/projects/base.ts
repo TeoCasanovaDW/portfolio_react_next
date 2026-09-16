@@ -34,6 +34,7 @@ export const projectBases = [
       'Vitest / RTL',
       'Vercel',
       'Railway',
+      'GitHub Actions',
     ],
     featureIcons: [
       'auth',

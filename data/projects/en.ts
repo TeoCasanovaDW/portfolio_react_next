@@ -11,7 +11,7 @@ export const enProjects: Record<ProjectSlug, ProjectContent> = {
     shortDescription:
       'Full-stack peer-to-peer rental platform with authentication, favorites, messaging, listing creation and account management.',
     description:
-      'Next.js rental application to browse and publish housing listings, keep favorites, talk to owners and manage an account, through a responsive interface connected to an Express API.',
+      'Next.js rental application to browse and publish housing listings, keep favorites, talk to owners and manage an account, through a responsive interface connected to an Express API. A GitHub Actions CI runs lint, tests and builds on every push.',
     tags: ['Full-Stack', 'Next.js', 'Marketplace'],
     linkLabels: ['View site', 'GitHub'],
     context:

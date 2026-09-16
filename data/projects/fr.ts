@@ -11,7 +11,7 @@ export const frProjects: Record<ProjectSlug, ProjectContent> = {
     shortDescription:
       'Plateforme full-stack de location entre particuliers avec authentification, favoris, messagerie, création d’annonces et gestion de compte.',
     description:
-      'Application Next.js de location de logements permettant de consulter et publier des annonces, gérer ses favoris, échanger avec les propriétaires et administrer son compte à travers une interface responsive connectée à une API Express.',
+      'Application Next.js de location de logements permettant de consulter et publier des annonces, gérer ses favoris, échanger avec les propriétaires et administrer son compte à travers une interface responsive connectée à une API Express. Une CI GitHub Actions vérifie lint, tests et build à chaque push.',
     tags: ['Full-Stack', 'Next.js', 'Marketplace'],
     linkLabels: ['Voir le site', 'GitHub'],
     context:
