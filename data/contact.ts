@@ -13,5 +13,10 @@ export const contact: ContactInfo = {
       href: 'https://github.com/TeoCasanovaDW',
       icon: 'github',
     },
+    {
+      label: 'X',
+      href: 'https://x.com/teo_csnv_dev',
+      icon: 'x',
+    },
   ],
 }

@@ -3,6 +3,7 @@ import type { IconName, TechLogo } from '@/types/project'
 export const iconMap: Record<IconName, string> = {
   github: '/icons/social/github.svg',
   linkedin: '/icons/social/linkedin.svg',
+  x: '/icons/social/x.svg',
   arrowRight: '/icons/ui/arrow-right-light.svg',
   arrowLeft: '/icons/ui/arrow-left-light.svg',
   copy: '/icons/ui/copy.svg',
@@ -44,7 +45,8 @@ export const techLogoMap: Record<TechLogo, string> = {
   cypress: '/icons/tech/cypress.svg',
 }
 
-export const socialIconMap: Record<'linkedin' | 'github', string> = {
+export const socialIconMap: Record<'linkedin' | 'github' | 'x', string> = {
   linkedin: '/icons/social/linkedin.svg',
   github: '/icons/social/github.svg',
+  x: '/icons/social/x.svg',
 }

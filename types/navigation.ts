@@ -6,7 +6,7 @@ export type NavigationItem = {
 export type SocialLink = {
   label: string
   href: string
-  icon: 'linkedin' | 'github'
+  icon: 'linkedin' | 'github' | 'x'
 }
 
 export type ContactInfo = {

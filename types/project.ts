@@ -1,6 +1,7 @@
 export type IconName =
   | 'github'
   | 'linkedin'
+  | 'x'
   | 'arrowRight'
   | 'arrowLeft'
   | 'copy'
