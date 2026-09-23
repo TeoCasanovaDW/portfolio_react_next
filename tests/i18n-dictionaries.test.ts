@@ -60,6 +60,7 @@ describe('dictionary parity', () => {
       'project.stack',
       'projects.workInProgress',
       'metadata.project.title',
+      'blog.title',
     ])
 
     const identical = leafPaths(en)

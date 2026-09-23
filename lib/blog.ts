@@ -75,3 +75,14 @@ export function getAllTags(): string[] {
 
 /** Article slugs, newest first. Identical in both languages. */
 export const articleSlugs: string[] = [...articleBases].sort(byDateDesc).map((base) => base.slug)
+
+/**
+ * Publication date in long, localized form (e.g. "September 23, 2026").
+ * `timeZone: 'UTC'` keeps the result stable regardless of the build machine's local time,
+ * since `date` is a plain ISO day with no time component.
+ */
+export function formatArticleDate(date: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(locale, { dateStyle: 'long', timeZone: 'UTC' }).format(
+    new Date(date)
+  )
+}

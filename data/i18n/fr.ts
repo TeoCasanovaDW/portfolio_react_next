@@ -129,6 +129,16 @@ export const fr: Dictionary = {
     limits: 'Limites actuelles',
   },
 
+  blog: {
+    title: 'Blog',
+    paragraphs: [
+      "Notes sur les outils, les patterns et les choix techniques que j'utilise au quotidien avec React, Next.js et TypeScript.",
+      "Un espace pour détailler les décisions et les compromis derrière mes projets, plutôt qu'un blog technique généraliste.",
+    ],
+    /** `{minutes}` is replaced with the reading time of the article. */
+    readingTime: '{minutes} min de lecture',
+  },
+
   contact: {
     title: 'Contact',
     intro: "Vous souhaitez échanger à propos d'une opportunité, d'un projet ou de mon profil ?",

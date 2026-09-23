@@ -130,6 +130,16 @@ export const en = {
     limits: 'Current limitations',
   },
 
+  blog: {
+    title: 'Blog',
+    paragraphs: [
+      'Notes on the tools, patterns and decisions I rely on when building with React, Next.js and TypeScript.',
+      'A space to think through the trade-offs behind my projects, rather than a general tech blog.',
+    ],
+    /** `{minutes}` is replaced with the reading time of the article. */
+    readingTime: '{minutes} min read',
+  },
+
   contact: {
     title: 'Contact',
     intro: 'Would you like to talk about an opportunity, a project or my profile?',
