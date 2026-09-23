@@ -1,8 +1,10 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
 import { articleSlugs, formatArticleDate, getArticle } from '@/lib/blog'
 import { getDictionary, localizePath, resolveLocale } from '@/lib/i18n'
+import { localeAlternates } from '@/lib/site'
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>
@@ -13,6 +15,23 @@ export const dynamicParams = false
 
 export function generateStaticParams() {
   return articleSlugs.map((slug) => ({ slug }))
+}
+
+/** Title and description taken from the article resolved in the current locale. */
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale: rawLocale, slug } = await params
+  const locale = resolveLocale(rawLocale)
+  const article = getArticle(slug, locale)
+
+  if (!article) return {}
+
+  const { metadata } = getDictionary(locale)
+
+  return {
+    title: metadata.article.title.replace('{title}', article.title),
+    description: article.excerpt,
+    alternates: localeAlternates(`/blog/${article.slug}`, locale),
+  }
 }
 
 export default async function ArticlePage({ params }: Props) {

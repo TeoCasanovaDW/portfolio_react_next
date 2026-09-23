@@ -26,6 +26,15 @@ export const fr: Dictionary = {
     project: {
       title: '{name} | Téo Casanova',
     },
+    blog: {
+      title: 'Blog | Téo Casanova',
+      description:
+        "Articles sur React, Next.js, TypeScript et les choix d'architecture derrière mes projets.",
+    },
+    /** Article detail page: `{title}` is replaced with the article title. */
+    article: {
+      title: '{title} | Téo Casanova',
+    },
     notFound: {
       title: 'Page introuvable | Téo Casanova',
       description: "Cette page n'existe pas ou a été déplacée.",
@@ -36,6 +45,7 @@ export const fr: Dictionary = {
     home: 'Accueil',
     about: 'À propos',
     projects: 'Projets',
+    blog: 'Blog',
     contact: 'Contact',
     mainLabel: 'Navigation principale',
     mobileLabel: 'Navigation mobile',

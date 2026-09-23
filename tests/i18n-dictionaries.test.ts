@@ -61,6 +61,9 @@ describe('dictionary parity', () => {
       'projects.workInProgress',
       'metadata.project.title',
       'blog.title',
+      'nav.blog',
+      'metadata.blog.title',
+      'metadata.article.title',
     ])
 
     const identical = leafPaths(en)
@@ -74,6 +77,12 @@ describe('dictionary parity', () => {
   it('keeps the {name} placeholder of the project title in both languages', () => {
     for (const locale of locales) {
       expect(getDictionary(locale).metadata.project.title).toContain('{name}')
+    }
+  })
+
+  it('keeps the {title} placeholder of the article title in both languages', () => {
+    for (const locale of locales) {
+      expect(getDictionary(locale).metadata.article.title).toContain('{title}')
     }
   })
 })

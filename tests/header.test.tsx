@@ -39,9 +39,7 @@ function renderHeader(locale: Locale, path = '/') {
   pathname.value = path
   const dictionary = getDictionary(locale)
 
-  return render(
-    <Header locale={locale} items={getNavigation(dictionary)} nav={dictionary.nav} />
-  )
+  return render(<Header locale={locale} items={getNavigation(dictionary)} nav={dictionary.nav} />)
 }
 
 beforeEach(() => {
@@ -51,12 +49,13 @@ beforeEach(() => {
 describe.each(locales)('Header in %s', (locale) => {
   const { nav } = getDictionary(locale)
 
-  it('labels the three navigation entries in the current language', () => {
+  it('labels the four navigation entries in the current language', () => {
     renderHeader(locale)
 
     const desktop = screen.getByRole('navigation', { name: nav.mainLabel })
     expect(within(desktop).getByRole('link', { name: nav.about })).toBeInTheDocument()
     expect(within(desktop).getByRole('link', { name: nav.projects })).toBeInTheDocument()
+    expect(within(desktop).getByRole('link', { name: nav.blog })).toBeInTheDocument()
     expect(within(desktop).getByRole('link', { name: nav.contact })).toBeInTheDocument()
   })
 
@@ -111,7 +110,7 @@ describe.each(locales)('Header in %s', (locale) => {
     await user.click(burger)
 
     const mobile = screen.getByRole('navigation', { name: nav.mobileLabel })
-    expect(within(mobile).getAllByRole('link')).toHaveLength(3)
+    expect(within(mobile).getAllByRole('link')).toHaveLength(4)
     expect(screen.getByRole('button', { name: nav.closeMenu })).toHaveAttribute(
       'aria-expanded',
       'true'

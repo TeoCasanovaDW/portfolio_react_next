@@ -27,6 +27,15 @@ export const en = {
     project: {
       title: '{name} | Téo Casanova',
     },
+    blog: {
+      title: 'Blog | Téo Casanova',
+      description:
+        'Articles on React, Next.js, TypeScript and the architecture choices behind my projects.',
+    },
+    /** Article detail page: `{title}` is replaced with the article title. */
+    article: {
+      title: '{title} | Téo Casanova',
+    },
     notFound: {
       title: 'Page not found | Téo Casanova',
       description: 'This page does not exist or has been moved.',
@@ -37,6 +46,7 @@ export const en = {
     home: 'Home',
     about: 'About',
     projects: 'Projects',
+    blog: 'Blog',
     contact: 'Contact',
     mainLabel: 'Main navigation',
     mobileLabel: 'Mobile navigation',

@@ -1,11 +1,24 @@
+import type { Metadata } from 'next'
 import ArticleCard from '@/components/blog/ArticleCard'
 import TagFilter from '@/components/blog/TagFilter'
 import { formatArticleDate, getAllTags, getArticles } from '@/lib/blog'
 import { getDictionary, localizePath, resolveLocale } from '@/lib/i18n'
+import { localeAlternates } from '@/lib/site'
 
 type Props = {
   params: Promise<{ locale: string }>
   searchParams: Promise<{ tag?: string }>
+}
+
+/**
+ * Canonical always points to the plain list, tag filter or not: the filtered view
+ * is a query on the same page, not a distinct indexable URL.
+ */
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = resolveLocale((await params).locale)
+  const { metadata } = getDictionary(locale)
+
+  return { ...metadata.blog, alternates: localeAlternates('/blog', locale) }
 }
 
 export default async function BlogPage({ params, searchParams }: Props) {

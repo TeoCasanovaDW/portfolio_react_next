@@ -9,6 +9,7 @@ export function getNavigation(dictionary: Dictionary): NavigationItem[] {
   return [
     { label: dictionary.nav.about, href: '/about' },
     { label: dictionary.nav.projects, href: '/projects' },
+    { label: dictionary.nav.blog, href: '/blog' },
     { label: dictionary.nav.contact, href: '/contact' },
   ]
 }

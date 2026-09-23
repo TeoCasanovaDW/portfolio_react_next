@@ -2,11 +2,16 @@ import { describe, expect, it } from 'vitest'
 import { SITE_URL, absoluteUrl, localeAlternates } from '@/lib/site'
 import sitemap from '@/app/sitemap'
 import { generateMetadata as projectMetadata } from '@/app/[locale]/projects/[slug]/page'
+import { articleSlugs } from '@/lib/blog'
 import { getDictionary, locales } from '@/lib/i18n'
 import { getProject, projectSlugs } from '@/lib/projects'
 
-const publicPaths = ['/', '/about', '/projects', '/contact']
-const allPaths = [...publicPaths, ...projectSlugs.map((slug) => `/projects/${slug}`)]
+const publicPaths = ['/', '/about', '/projects', '/blog', '/contact']
+const allPaths = [
+  ...publicPaths,
+  ...projectSlugs.map((slug) => `/projects/${slug}`),
+  ...articleSlugs.map((slug) => `/blog/${slug}`),
+]
 
 /** Every absolute URL produced by the metadata and the sitemap. */
 function everyEmittedUrl(): string[] {
@@ -114,7 +119,14 @@ describe('project detail metadata', () => {
 describe('page metadata', () => {
   it.each(locales)('gives every %s page its own title and description', (locale) => {
     const { metadata } = getDictionary(locale)
-    const pages = [metadata.home, metadata.about, metadata.projects, metadata.contact, metadata.notFound]
+    const pages = [
+      metadata.home,
+      metadata.about,
+      metadata.projects,
+      metadata.blog,
+      metadata.contact,
+      metadata.notFound,
+    ]
     const titles = pages.map((page) => page.title)
 
     expect(new Set(titles).size).toBe(titles.length)
