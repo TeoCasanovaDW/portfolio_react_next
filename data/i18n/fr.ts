@@ -137,6 +137,9 @@ export const fr: Dictionary = {
     ],
     /** `{minutes}` is replaced with the reading time of the article. */
     readingTime: '{minutes} min de lecture',
+    filterLabel: 'Filtrer les articles par tag',
+    allTags: 'Tous les articles',
+    emptyState: 'Aucun article pour ce tag pour le moment.',
   },
 
   contact: {

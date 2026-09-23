@@ -1,15 +1,19 @@
 import ArticleCard from '@/components/blog/ArticleCard'
-import { formatArticleDate, getArticles } from '@/lib/blog'
+import TagFilter from '@/components/blog/TagFilter'
+import { formatArticleDate, getAllTags, getArticles } from '@/lib/blog'
 import { getDictionary, localizePath, resolveLocale } from '@/lib/i18n'
 
 type Props = {
   params: Promise<{ locale: string }>
+  searchParams: Promise<{ tag?: string }>
 }
 
-export default async function BlogPage({ params }: Props) {
+export default async function BlogPage({ params, searchParams }: Props) {
   const locale = resolveLocale((await params).locale)
+  const { tag } = await searchParams
   const { blog: copy } = getDictionary(locale)
-  const articles = getArticles(locale)
+  const articles = getArticles(locale, tag)
+  const blogPath = localizePath('/blog', locale)
 
   return (
     <div className="max-w-[1200px] mx-auto px-6 py-16">
@@ -28,19 +32,32 @@ export default async function BlogPage({ params }: Props) {
         </div>
       </div>
 
+      {/* Tag filter */}
+      <TagFilter
+        tags={getAllTags()}
+        activeTag={tag}
+        basePath={blogPath}
+        allLabel={copy.allTags}
+        ariaLabel={copy.filterLabel}
+      />
+
       {/* Article list */}
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {articles.map((article) => (
-            <ArticleCard
-              key={article.slug}
-              article={article}
-              href={localizePath(`/blog/${article.slug}`, locale)}
-              dateLabel={formatArticleDate(article.date, locale)}
-              readingLabel={copy.readingTime.replace('{minutes}', String(article.readingMinutes))}
-            />
-          ))}
-        </div>
+        {articles.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {articles.map((article) => (
+              <ArticleCard
+                key={article.slug}
+                article={article}
+                href={localizePath(`/blog/${article.slug}`, locale)}
+                dateLabel={formatArticleDate(article.date, locale)}
+                readingLabel={copy.readingTime.replace('{minutes}', String(article.readingMinutes))}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="text-text-secondary text-base leading-relaxed">{copy.emptyState}</p>
+        )}
       </section>
     </div>
   )

@@ -138,6 +138,9 @@ export const en = {
     ],
     /** `{minutes}` is replaced with the reading time of the article. */
     readingTime: '{minutes} min read',
+    filterLabel: 'Filter articles by tag',
+    allTags: 'All articles',
+    emptyState: 'No articles for this tag yet.',
   },
 
   contact: {
