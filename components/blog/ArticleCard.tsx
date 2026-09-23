@@ -14,7 +14,7 @@ type Props = {
 
 export default function ArticleCard({ article, href, dateLabel, readingLabel }: Props) {
   return (
-    <article className="bg-surface rounded-2xl border border-[#e5e5e5]/20 overflow-hidden hover:border-[#e5e5e5]/30 transition-colors duration-200">
+    <article className="group relative bg-surface rounded-2xl border border-[#e5e5e5]/20 overflow-hidden hover:border-[#e5e5e5]/30 has-[a:focus-visible]:border-accent transition-colors duration-200">
       <div className="p-6 flex flex-col gap-4">
         <div className="flex items-center justify-between text-xs text-text-secondary">
           <time dateTime={article.date}>{dateLabel}</time>
@@ -22,8 +22,9 @@ export default function ArticleCard({ article, href, dateLabel, readingLabel }: 
         </div>
 
         <div>
-          <Link href={href}>
-            <h3 className="font-heading text-xl font-semibold text-white hover:text-accent transition-colors duration-150">
+          {/* Stretched link: the ::after overlay makes the whole card clickable */}
+          <Link href={href} className="after:absolute after:inset-0 focus-visible:outline-none">
+            <h3 className="font-heading text-xl font-semibold text-white group-hover:text-accent transition-colors duration-150">
               {article.title}
             </h3>
           </Link>
