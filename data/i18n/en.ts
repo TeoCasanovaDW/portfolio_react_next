@@ -49,6 +49,7 @@ export const en = {
     viewProjects: 'View my projects',
     contactMe: 'Get in touch',
     backToProjects: 'Back to projects',
+    backToBlog: 'Back to blog',
     backHome: 'Back to home',
   },
 

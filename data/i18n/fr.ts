@@ -48,6 +48,7 @@ export const fr: Dictionary = {
     viewProjects: 'Voir mes projets',
     contactMe: 'Me contacter',
     backToProjects: 'Retour aux projets',
+    backToBlog: 'Retour au blog',
     backHome: "Retour à l'accueil",
   },
 
