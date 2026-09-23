@@ -19,7 +19,7 @@ export default function SkillCategoryCard({ title, skills }: Props) {
       <h3 className="font-heading text-sm font-semibold text-white text-center uppercase tracking-wider mb-8">
         {title}
       </h3>
-      <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+      <div className="flex flex-wrap justify-center gap-6">
         {skills.map((skill) => (
           <div key={skill.name} className="flex flex-col items-center gap-2">
             {isTechLogo(skill.icon) ? (

@@ -43,6 +43,7 @@ export const techLogoMap: Record<TechLogo, string> = {
   mistral: '/icons/tech/mistral.svg',
   docker: '/icons/tech/docker.svg',
   cypress: '/icons/tech/cypress.svg',
+  graphql: '/icons/tech/graphql.svg',
 }
 
 export const socialIconMap: Record<'linkedin' | 'github' | 'x', string> = {

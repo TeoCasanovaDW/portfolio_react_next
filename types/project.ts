@@ -40,6 +40,7 @@ export type TechLogo =
   | 'mistral'
   | 'docker'
   | 'cypress'
+  | 'graphql'
 
 export type ProjectLink = {
   label: string

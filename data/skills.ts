@@ -17,6 +17,7 @@ export const skills: Skill[] = [
   { name: 'Authentication', category: 'backend', icon: 'auth' },
   { name: 'Supabase', category: 'backend', icon: 'supabase' },
   { name: 'REST API', category: 'backend', icon: 'api' },
+  { name: 'GraphQL', category: 'backend', icon: 'graphql' },
 
   // Tools
   { name: 'Vercel', category: 'tools', icon: 'vercel' },
