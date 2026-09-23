@@ -1,8 +1,8 @@
 import type { ProjectBase } from '@/types/project'
 
 /**
- * Base technique des projets, identique dans les deux langues.
- * L'ordre de ce tableau est l'ordre d'affichage : Kasa reste en première position.
+ * Technical base of the projects, shared by both languages.
+ * The order of this array is the display order: Kasa stays in first position.
  */
 export const projectBases = [
   {
@@ -144,5 +144,5 @@ export const projectBases = [
   },
 ] as const satisfies readonly ProjectBase[]
 
-/** Slugs disponibles, dérivés de la base : un projet sans contenu casse le build. */
+/** Available slugs, derived from the base: a project without content breaks the build. */
 export type ProjectSlug = (typeof projectBases)[number]['slug']

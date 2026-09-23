@@ -1,6 +1,6 @@
 /**
- * Dictionnaire anglais — source de vérité du type `Dictionary`.
- * Toute clé ajoutée ici doit être ajoutée dans `fr.ts`, sinon le build échoue.
+ * English dictionary — source of truth for the `Dictionary` type.
+ * Every key added here must also be added to `fr.ts`, otherwise the build fails.
  */
 export const en = {
   metadata: {
@@ -23,7 +23,7 @@ export const en = {
       title: 'Contact | Téo Casanova',
       description: 'Get in touch with Téo Casanova about an opportunity, a project or his profile.',
     },
-    /** Page détail projet : `{name}` est remplacé par le nom du projet. */
+    /** Project detail page: `{name}` is replaced with the project name. */
     project: {
       title: '{name} | Téo Casanova',
     },

@@ -4,8 +4,8 @@ import type { ArticleSlug } from './base'
 import type { ArticleContent } from '@/types/article'
 
 /**
- * Contenus des articles en français.
- * Chaque entrée associe son titre, sa phrase d'introduction et son corps MDX.
+ * Article contents in French.
+ * Each entry pairs its title, its list excerpt and its MDX body.
  */
 export const frArticles: Record<ArticleSlug, ArticleContent> = {
   'next-server-components': {

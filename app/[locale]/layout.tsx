@@ -7,8 +7,8 @@ import { SITE_URL } from '@/lib/site'
 type LayoutParams = { params: Promise<{ locale: string }> }
 
 /**
- * Base des URLs absolues et métadonnées de repli de la locale, héritées par toute page
- * qui ne définit pas les siennes. Chaque page publique fournit ses propres `generateMetadata`.
+ * Base for absolute URLs and fallback metadata of the locale, inherited by every page
+ * that does not define its own. Every public page provides its own `generateMetadata`.
  */
 export async function generateMetadata({ params }: LayoutParams): Promise<Metadata> {
   const locale = resolveLocale((await params).locale)
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: LayoutParams): Promise<Metada
   }
 }
 
-/** Une locale inconnue n'est pas rendue à la demande : elle tombe sur la 404 globale du site. */
+/** An unknown locale is not rendered on demand: it falls through to the global 404. */
 export const dynamicParams = false
 
 export function generateStaticParams() {

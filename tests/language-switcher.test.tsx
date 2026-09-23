@@ -10,7 +10,7 @@ vi.mock('next/navigation', () => ({
   usePathname: () => pathname.value,
 }))
 
-/** `next/link` rendu en ancre simple : jsdom ne sait pas naviguer, seul le `href` compte ici. */
+/** `next/link` rendered as a plain anchor: jsdom cannot navigate, only the `href` matters. */
 vi.mock('next/link', () => ({
   default: ({ children, href, onClick, ...rest }: React.ComponentProps<'a'>) => (
     <a

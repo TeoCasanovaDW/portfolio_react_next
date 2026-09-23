@@ -1,8 +1,8 @@
 import type { Skill } from '@/types/skill'
 
 /**
- * Compétences, libellés en anglais.
- * Ce sont majoritairement des noms de technologies, identiques dans les deux langues.
+ * Skills, with English labels.
+ * Most of them are technology names, identical in both languages.
  */
 export const skills: Skill[] = [
   // Frontend
@@ -18,19 +18,19 @@ export const skills: Skill[] = [
   { name: 'Supabase', category: 'backend', icon: 'supabase' },
   { name: 'REST API', category: 'backend', icon: 'api' },
 
-  // Outils
+  // Tools
   { name: 'Vercel', category: 'tools', icon: 'vercel' },
   { name: 'Figma', category: 'tools', icon: 'figma' },
   { name: 'Git', category: 'tools', icon: 'git' },
   { name: 'GitHub', category: 'tools', icon: 'github' },
   { name: 'Vitest', category: 'tools', icon: 'vitest' },
 
-  // Méthodes
+  // Working methods
   { name: 'Agile', category: 'methodology', icon: 'agile' },
   { name: 'Spec Driven Development', category: 'methodology', icon: 'sdd' },
 ]
 
-/** Seuls ces deux libellés se traduisent en français, les autres sont des noms propres. */
+/** Only these two labels are translated into French, the others are proper nouns. */
 export const frenchSkillNames: Record<string, string> = {
   Authentication: 'Authentification',
   'REST API': 'API REST',

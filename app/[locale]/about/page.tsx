@@ -26,7 +26,7 @@ export default async function AboutPage({ params }: Props) {
   return (
     <div className="max-w-[1200px] mx-auto px-6 py-16">
 
-      {/* Titre + introduction */}
+      {/* Title + introduction */}
       <div className="mb-30">
         <h1 className="font-heading text-4xl md:text-5xl font-semibold text-white mb-20">
           {about.title}<span className="text-accent">.</span>
@@ -36,7 +36,7 @@ export default async function AboutPage({ params }: Props) {
         </p>
       </div>
 
-      {/* Section Compétences */}
+      {/* Skills section */}
       <section className="mb-30">
         <SectionTitle title={about.skills.title} />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -50,7 +50,7 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Section Parcours */}
+      {/* Background section */}
       <section className="mb-35">
         <SectionTitle title={about.background.title} />
         <div className="space-y-0">
@@ -77,7 +77,7 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Bloc Méthode de travail */}
+      {/* How I work block */}
       <section>
         <div className="bg-accent rounded-2xl p-10 md:p-14">
           <h2 className="font-heading text-2xl font-semibold text-[#121212] mb-6">

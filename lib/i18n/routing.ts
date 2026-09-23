@@ -2,8 +2,8 @@ import { defaultLocale, isLocale } from './locales'
 import type { Locale } from '@/types/i18n'
 
 /**
- * Ajoute le préfixe de locale à un chemin interne non préfixé.
- * L'anglais reste sans préfixe : `/about` en anglais, `/fr/about` en français.
+ * Adds the locale prefix to an unprefixed internal path.
+ * English stays unprefixed: `/about` in English, `/fr/about` in French.
  */
 export function localizePath(path: string, locale: Locale): string {
   const normalized = path.startsWith('/') ? path : `/${path}`
@@ -14,8 +14,8 @@ export function localizePath(path: string, locale: Locale): string {
 }
 
 /**
- * Retire le préfixe de locale d'un `pathname` : `/fr/about` → `/about`, `/fr` → `/`.
- * Un chemin déjà sans préfixe est renvoyé tel quel.
+ * Strips the locale prefix from a `pathname`: `/fr/about` → `/about`, `/fr` → `/`.
+ * An already unprefixed path is returned as is.
  */
 export function stripLocale(pathname: string): string {
   const [, first, ...rest] = pathname.split('/')

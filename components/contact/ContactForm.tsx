@@ -69,8 +69,8 @@ export default function ContactForm({ locale, copy }: Props) {
     setStatus('loading')
 
     try {
-      // La locale voyage en en-tête : le corps garde sa forme, et la route peut
-      // localiser ses erreurs même quand le JSON est illisible.
+      // The locale travels in a header: the body keeps its shape, and the route can
+      // localize its errors even when the JSON is unreadable.
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-locale': locale },

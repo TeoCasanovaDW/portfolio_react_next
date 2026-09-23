@@ -23,7 +23,7 @@ export default async function ProjectsPage({ params }: Props) {
   return (
     <div className="max-w-[1200px] mx-auto px-6 py-16">
 
-      {/* Titre + introduction */}
+      {/* Title + introduction */}
       <div className="mb-30">
         <h1 className="font-heading text-4xl md:text-5xl font-semibold text-white mb-20">
           {copy.title}<span className="text-accent">.</span>
@@ -37,7 +37,7 @@ export default async function ProjectsPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Liste des projets */}
+      {/* Project list */}
       <section>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (

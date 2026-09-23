@@ -5,7 +5,7 @@ import type { Locale } from '@/types/i18n'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-/** L'email interne reste en français : seule la langue du visiteur y est reportée. */
+/** The internal email stays in French: only the visitor's language is reported in it. */
 const VISITOR_LANGUAGE: Record<Locale, string> = {
   en: 'Anglais',
   fr: 'Français',
@@ -16,7 +16,7 @@ function isValidEmail(email: string): boolean {
 }
 
 export async function POST(request: Request) {
-  // Lue avant le corps : même un JSON illisible reçoit son erreur dans la bonne langue.
+  // Read before the body: even an unreadable JSON gets its error in the right language.
   const locale = resolveLocale(request.headers.get('x-locale') ?? undefined)
   const t = getDictionary(locale).contact.api
 

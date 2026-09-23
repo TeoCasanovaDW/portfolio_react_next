@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-/** Frappe sans délai simulé : ces tests vérifient des libellés, pas un rythme de saisie. */
+/** Typing without simulated delay: these tests check labels, not a typing rhythm. */
 const user = userEvent.setup({ delay: null })
 import ContactForm from '@/components/contact/ContactForm'
 import { getDictionary, locales } from '@/lib/i18n'

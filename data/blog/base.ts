@@ -1,8 +1,8 @@
 import type { ArticleBase } from '@/types/article'
 
 /**
- * Base des articles, identique dans les deux langues.
- * L'ordre de ce tableau n'a pas d'importance : la liste est triée par date décroissante.
+ * Article base, shared by both languages.
+ * The order of this array does not matter: the list is sorted by descending date.
  */
 export const articleBases = [
   {
@@ -19,5 +19,5 @@ export const articleBases = [
   },
 ] as const satisfies readonly ArticleBase[]
 
-/** Slugs disponibles, dérivés de la base : un article sans contenu casse le build. */
+/** Available slugs, derived from the base: an article without content breaks the build. */
 export type ArticleSlug = (typeof articleBases)[number]['slug']

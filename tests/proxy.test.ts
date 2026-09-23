@@ -11,7 +11,7 @@ function request(path: string, cookie?: string) {
   return req
 }
 
-/** Chemin vers lequel le proxy réécrit en interne, l'URL affichée restant inchangée. */
+/** Path the proxy rewrites to internally, the displayed URL staying unchanged. */
 function rewrittenTo(response: Response) {
   const target = response.headers.get('x-middleware-rewrite')
   return target ? new URL(target).pathname : null

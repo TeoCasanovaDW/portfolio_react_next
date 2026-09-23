@@ -1,31 +1,31 @@
 import type { ComponentType } from 'react'
 
 /**
- * Partie non traduite d'un article : identité, date, durée et tags.
- * Partagée par les deux langues.
+ * Untranslated part of an article: identity, date, duration and tags.
+ * Shared by both languages.
  */
 export type ArticleBase = {
   slug: string
-  /** Date de publication au format ISO `AAAA-MM-JJ` : tri de la liste et attribut `dateTime`. */
+  /** Publication date in ISO `YYYY-MM-DD` format: list sorting and `dateTime` attribute. */
   date: string
-  /** Durée de lecture estimée, en minutes. */
+  /** Estimated reading time, in minutes. */
   readingMinutes: number
-  /** Tags techniques, identiques dans les deux langues : ils servent aussi de clé de filtrage. */
+  /** Technical tags, identical in both languages: they also act as the filtering key. */
   tags: readonly string[]
 }
 
 /**
- * Partie traduite d'un article.
- * `Body` est le composant issu du fichier MDX de la langue correspondante.
+ * Translated part of an article.
+ * `Body` is the component coming from the MDX file of the matching language.
  */
 export type ArticleContent = {
   title: string
-  /** Phrase d'introduction affichée dans la liste. */
+  /** Introduction sentence shown in the list. */
   excerpt: string
   Body: ComponentType
 }
 
-/** Article résolu dans une locale, tel que consommé par les composants. */
+/** Article resolved in a locale, as consumed by the components. */
 export type Article = {
   slug: string
   date: string

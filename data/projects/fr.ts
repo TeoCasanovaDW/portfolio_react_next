@@ -2,8 +2,8 @@ import type { ProjectSlug } from './base'
 import type { ProjectContent } from '@/types/project'
 
 /**
- * Contenus projets en français, repris du contenu existant.
- * `linkLabels` et `featureLabels` suivent l'ordre déclaré dans `base.ts`.
+ * Project contents in French, taken from the existing content.
+ * `linkLabels` and `featureLabels` follow the order declared in `base.ts`.
  */
 export const frProjects: Record<ProjectSlug, ProjectContent> = {
   kasa: {

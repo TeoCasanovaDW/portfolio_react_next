@@ -7,7 +7,7 @@ const contents: Record<Locale, Record<string, ArticleContent>> = {
   fr: frArticles,
 }
 
-/** Fusionne la base et le contenu traduit en un `Article` complet. */
+/** Merges the base and the translated content into a complete `Article`. */
 function resolveArticle(base: ArticleBase, content: ArticleContent): Article {
   return {
     slug: base.slug,
@@ -21,21 +21,21 @@ function resolveArticle(base: ArticleBase, content: ArticleContent): Article {
 }
 
 /**
- * Du plus récent au plus ancien. Les dates ISO se comparent comme des chaînes.
- * `sort` étant stable, deux articles de même date gardent l'ordre de la base.
+ * Newest first. ISO dates compare correctly as plain strings.
+ * Since `sort` is stable, two articles sharing a date keep the order of the base.
  */
 function byDateDesc(a: ArticleBase, b: ArticleBase): number {
   return b.date.localeCompare(a.date)
 }
 
-/** Vrai si l'article porte ce tag. La comparaison ignore la casse : le tag vient de l'URL. */
+/** True if the article carries this tag. Case-insensitive: the tag comes from the URL. */
 function hasTag(base: ArticleBase, tag: string): boolean {
   return base.tags.some((value) => value.toLowerCase() === tag.toLowerCase())
 }
 
 /**
- * Articles résolus dans une locale, du plus récent au plus ancien.
- * Un `tag` restreint la liste ; un tag inconnu renvoie un tableau vide.
+ * Articles resolved in a locale, newest first.
+ * A `tag` narrows the list; an unknown tag returns an empty array.
  */
 export function getArticles(locale: Locale, tag?: string): Article[] {
   const content = contents[locale]
@@ -46,7 +46,7 @@ export function getArticles(locale: Locale, tag?: string): Article[] {
     .map((base) => resolveArticle(base, content[base.slug]))
 }
 
-/** Article résolu dans une locale, ou `undefined` si le slug est inconnu. */
+/** Article resolved in a locale, or `undefined` if the slug is unknown. */
 export function getArticle(slug: string, locale: Locale): Article | undefined {
   const base = articleBases.find((article) => article.slug === slug)
 
@@ -56,8 +56,8 @@ export function getArticle(slug: string, locale: Locale): Article | undefined {
 }
 
 /**
- * Tags présents dans au moins un article, dédupliqués sans tenir compte de la casse
- * et classés par ordre alphabétique. La première orthographe rencontrée fait foi.
+ * Tags used by at least one article, deduplicated regardless of case
+ * and sorted alphabetically. The first spelling encountered wins.
  */
 export function getAllTags(): string[] {
   const tags = new Map<string, string>()
@@ -73,5 +73,5 @@ export function getAllTags(): string[] {
   return [...tags.values()].sort((a, b) => a.localeCompare(b))
 }
 
-/** Slugs des articles, du plus récent au plus ancien. Identiques dans les deux langues. */
+/** Article slugs, newest first. Identical in both languages. */
 export const articleSlugs: string[] = [...articleBases].sort(byDateDesc).map((base) => base.slug)

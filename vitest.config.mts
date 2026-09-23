@@ -2,9 +2,9 @@ import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitest/config'
 
 /**
- * Configuration des tests ciblés de la spec 08.
- * L'alias reprend `paths` de `tsconfig.json` : pas de plugin Vite supplémentaire,
- * les deux versions de Vite présentes dans l'arbre de dépendances entrant sinon en conflit.
+ * Configuration for the targeted tests of spec 08.
+ * The alias mirrors `paths` from `tsconfig.json`: no extra Vite plugin, since the two
+ * Vite versions present in the dependency tree would otherwise conflict.
  */
 export default defineConfig({
   resolve: {

@@ -3,12 +3,12 @@ import { defaultLocale, locales } from '@/lib/i18n'
 import { projectSlugs } from '@/lib/projects'
 import { absoluteUrl } from '@/lib/site'
 
-/** Pages publiques, hors `/dev/ui` qui est temporaire et hors périmètre. */
+/** Public pages, excluding `/dev/ui` which is temporary and out of scope. */
 const paths = ['/', '/about', '/projects', '/contact']
 
 /**
- * Une entrée par page et par langue, avec les `hreflang` des deux langues
- * et l'anglais en `x-default`. Les URLs anglaises restent sans préfixe.
+ * One entry per page and per language, with the `hreflang` of both languages
+ * and English as `x-default`. English URLs stay unprefixed.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const allPaths = [...paths, ...projectSlugs.map((slug) => `/projects/${slug}`)]

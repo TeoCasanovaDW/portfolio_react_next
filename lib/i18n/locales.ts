@@ -9,8 +9,8 @@ export function isLocale(value: string | undefined): value is Locale {
 }
 
 /**
- * Ramène une valeur d'origine externe (`params`, header `x-locale`) à une locale sûre.
- * Le proxy garantit déjà une locale valide : le repli anglais n'est qu'un filet de sécurité.
+ * Narrows a value coming from outside (`params`, the `x-locale` header) to a safe locale.
+ * The proxy already guarantees a valid locale: the English fallback is only a safety net.
  */
 export function resolveLocale(value: string | undefined): Locale {
   return isLocale(value) ? value : defaultLocale

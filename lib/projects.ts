@@ -7,7 +7,7 @@ const contents: Record<Locale, Record<string, ProjectContent>> = {
   fr: frProjects,
 }
 
-/** Fusionne la base technique et le contenu traduit en un `Project` complet. */
+/** Merges the technical base and the translated content into a complete `Project`. */
 function resolveProject(base: ProjectBase, content: ProjectContent): Project {
   return {
     slug: base.slug,
@@ -32,14 +32,14 @@ function resolveProject(base: ProjectBase, content: ProjectContent): Project {
   }
 }
 
-/** Projets résolus dans une locale, dans l'ordre de la base : Kasa en premier. */
+/** Projects resolved in a locale, in base order: Kasa first. */
 export function getProjects(locale: Locale): Project[] {
   const content = contents[locale]
 
   return projectBases.map((base) => resolveProject(base, content[base.slug]))
 }
 
-/** Projet résolu dans une locale, ou `undefined` si le slug est inconnu. */
+/** Project resolved in a locale, or `undefined` if the slug is unknown. */
 export function getProject(slug: string, locale: Locale): Project | undefined {
   const base = projectBases.find((project) => project.slug === slug)
 
@@ -48,5 +48,5 @@ export function getProject(slug: string, locale: Locale): Project | undefined {
   return resolveProject(base, contents[locale][base.slug])
 }
 
-/** Slugs des projets, dans l'ordre d'affichage. Identiques dans les deux langues. */
+/** Project slugs, in display order. Identical in both languages. */
 export const projectSlugs: string[] = projectBases.map((project) => project.slug)

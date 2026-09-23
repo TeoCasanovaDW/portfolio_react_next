@@ -1,8 +1,8 @@
 /**
- * Cookie de persistance de la langue, partagé par `proxy.ts` qui le lit
- * et par le sélecteur de langue qui l'écrit avant de naviguer.
+ * Language persistence cookie, shared by `proxy.ts` which reads it
+ * and by the language switcher which writes it before navigating.
  */
 export const LOCALE_COOKIE = 'NEXT_LOCALE'
 
-/** Un an, conformément au §1 de la spec. */
+/** One year, as required by §1 of the spec. */
 export const LOCALE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365

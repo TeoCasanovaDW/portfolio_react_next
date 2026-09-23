@@ -2,8 +2,8 @@ import type { ProjectSlug } from './base'
 import type { ProjectContent } from '@/types/project'
 
 /**
- * Contenus projets en anglais.
- * `linkLabels` et `featureLabels` suivent l'ordre déclaré dans `base.ts`.
+ * Project contents in English.
+ * `linkLabels` and `featureLabels` follow the order declared in `base.ts`.
  */
 export const enProjects: Record<ProjectSlug, ProjectContent> = {
   kasa: {

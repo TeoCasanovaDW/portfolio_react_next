@@ -17,14 +17,14 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>
 }
 
-/** Un slug inconnu n'est pas rendu à la demande : il tombe sur la 404 globale du site. */
+/** An unknown slug is not rendered on demand: it falls through to the global 404. */
 export const dynamicParams = false
 
 export function generateStaticParams() {
   return projectSlugs.map((slug) => ({ slug }))
 }
 
-/** Titre et description issus du projet résolu dans la locale courante. */
+/** Title and description taken from the project resolved in the current locale. */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: rawLocale, slug } = await params
   const locale = resolveLocale(rawLocale)
@@ -54,12 +54,12 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <div className="max-w-[1200px] mx-auto px-6 py-16">
 
-      {/* Retour */}
+      {/* Back link */}
       <div className="mb-14">
         <Button label={cta.backToProjects} variant="dark" icon="arrowLeft" iconPosition="left" href={localizePath('/projects', locale)} />
       </div>
 
-      {/* Titre + description — 2 colonnes desktop */}
+      {/* Title + description — 2 columns on desktop */}
       <div className="grid md:grid-cols-[2fr_3fr] gap-8 md:gap-16 items-start mb-16">
         <h1 className="font-heading text-4xl md:text-5xl font-semibold text-white">
           {project.name}<span className="text-accent">.</span>
@@ -89,7 +89,7 @@ export default async function ProjectPage({ params }: Props) {
         )}
       </div>
 
-      {/* Liens + tags + logos */}
+      {/* Links + tags + logos */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-20">
         <div className="flex flex-wrap items-center gap-3">
           <ProjectLinks links={project.links} />
@@ -104,7 +104,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Sections contenu */}
+      {/* Content sections */}
       <div className="space-y-16">
 
         <section>
@@ -112,7 +112,7 @@ export default async function ProjectPage({ params }: Props) {
           <p className="text-text-secondary text-base leading-relaxed">{project.context}</p>
         </section>
 
-        {/* Stack — card sombre */}
+        {/* Stack — dark card */}
         <section>
           <div className="bg-surface border border-white/10 rounded-2xl p-8 md:p-10">
             <div className="flex flex-col md:flex-row md:items-start md:gap-12">
@@ -154,7 +154,7 @@ export default async function ProjectPage({ params }: Props) {
 
       </div>
 
-      {/* CTA bas */}
+      {/* Bottom CTA */}
       <div className="flex flex-col sm:flex-row sm:justify-between gap-3 mt-20">
         <Button label={cta.backToProjects} variant="dark" icon="arrowLeft" iconPosition="left" href={localizePath('/projects', locale)} />
         <Button label={cta.contactMe} variant="primary" icon="arrowRight" href={localizePath('/contact', locale)} />

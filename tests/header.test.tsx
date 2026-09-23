@@ -135,7 +135,7 @@ describe.each(locales)('Header in %s', (locale) => {
 })
 
 describe('header wording', () => {
-  /** Libellés propres à une langue : `Contact` est identique dans les deux et ne prouve rien. */
+  /** Labels specific to one language: `Contact` is the same in both and proves nothing. */
   const exclusiveLabels = {
     en: ['Home', 'About', 'Projects', 'Main navigation', 'Open menu'],
     fr: ['Accueil', 'À propos', 'Projets', 'Navigation principale', 'Ouvrir le menu'],

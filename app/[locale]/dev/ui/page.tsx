@@ -1,5 +1,5 @@
-// TEMPORAIRE — page de preview des composants UI.
-// À supprimer avant le déploiement en production.
+// TEMPORARY — UI component preview page.
+// To be removed before deploying to production.
 
 import Button from '@/components/ui/Button'
 import Badge from '@/components/ui/Badge'

@@ -5,7 +5,7 @@ import { fr } from '@/data/i18n/fr'
 
 type Node = unknown
 
-/** Chemins de toutes les feuilles d'un dictionnaire, arrays inclus, triés. */
+/** Paths of every leaf of a dictionary, arrays included, sorted. */
 function leafPaths(node: Node, prefix = ''): string[] {
   if (Array.isArray(node)) {
     return node.flatMap((item, index) => leafPaths(item, `${prefix}[${index}]`))
@@ -44,10 +44,10 @@ describe('dictionary parity', () => {
   })
 
   it('translates every user-facing string instead of copying english into french', () => {
-    /** Champs structurels ou factuels, identiques par nature dans les deux langues. */
+    /** Structural or factual fields, identical by nature in both languages. */
     const structuralSuffixes = ['.id', '.period', '.company']
 
-    /** Libellés volontairement identiques : noms propres, marques ou anglicismes déjà en place. */
+    /** Deliberately identical labels: proper nouns, brands or anglicisms already in use. */
     const sharedByDesign = new Set([
       'metadata.contact.title',
       'nav.contact',

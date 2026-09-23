@@ -8,7 +8,7 @@ import { getProject, projectSlugs } from '@/lib/projects'
 const publicPaths = ['/', '/about', '/projects', '/contact']
 const allPaths = [...publicPaths, ...projectSlugs.map((slug) => `/projects/${slug}`)]
 
-/** Toutes les URLs absolues produites par les métadonnées et le sitemap. */
+/** Every absolute URL produced by the metadata and the sitemap. */
 function everyEmittedUrl(): string[] {
   const fromAlternates = allPaths.flatMap((path) =>
     locales.flatMap((locale) => {

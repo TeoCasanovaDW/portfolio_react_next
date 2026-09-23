@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     qualities: [75, 100],
   },
   experimental: {
-    // Seule convention qui permet une 404 complète quand le layout racine vit sous `[locale]`.
+    // Only convention that allows a complete 404 when the root layout lives under `[locale]`.
     globalNotFound: true,
   },
 };

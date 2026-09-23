@@ -16,8 +16,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 /**
- * Enveloppe HTML du site, partagée par le layout de locale et par `global-not-found.tsx`
- * qui ne peut pas s'appuyer sur ce layout puisqu'il vit sous le segment `[locale]`.
+ * HTML shell of the site, shared by the locale layout and by `global-not-found.tsx`
+ * which cannot rely on that layout since it lives under the `[locale]` segment.
  */
 export default function Shell({
   locale,

@@ -7,9 +7,9 @@ import ProjectLinks from '@/components/projects/ProjectLinks'
 
 type Props = {
   project: Project
-  /** Chemin de la page détail, déjà préfixé par la locale courante. */
+  /** Path to the detail page, already prefixed with the current locale. */
   href: string
-  /** Libellé du badge « en cours », déjà résolu dans la locale courante. */
+  /** Label of the "work in progress" badge, already resolved in the current locale. */
   workInProgressLabel: string
 }
 

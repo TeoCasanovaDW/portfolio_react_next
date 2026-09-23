@@ -1,6 +1,6 @@
 import type { Dictionary } from '@/types/i18n'
 
-/** Dictionnaire français — doit couvrir exactement les clés de `en.ts`. */
+/** French dictionary — must cover exactly the keys of `en.ts`. */
 export const fr: Dictionary = {
   metadata: {
     home: {

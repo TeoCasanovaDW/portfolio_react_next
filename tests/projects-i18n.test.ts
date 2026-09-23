@@ -6,7 +6,7 @@ import type { ProjectContent } from '@/types/project'
 
 const contentsByLocale = { en: enProjects, fr: frProjects } as const
 
-/** Listes traduites dont la longueur doit rester alignée entre les deux langues. */
+/** Translated lists whose length must stay aligned between the two languages. */
 const parallelLists = [
   'tags',
   'linkLabels',

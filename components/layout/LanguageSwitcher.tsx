@@ -9,16 +9,16 @@ import { localizePath, stripLocale } from '@/lib/i18n/routing'
 import type { Locale } from '@/types/i18n'
 
 /**
- * Écrit la préférence de langue avant la navigation : sans ce cookie, la règle 3
- * du proxy renverrait aussitôt un chemin non préfixé vers `/fr`.
+ * Writes the language preference before navigating: without this cookie, rule 3
+ * of the proxy would immediately send an unprefixed path back to `/fr`.
  */
 function persistLocale(locale: Locale) {
   document.cookie = `${LOCALE_COOKIE}=${locale}; path=/; max-age=${LOCALE_COOKIE_MAX_AGE}; samesite=lax`
 }
 
 /**
- * Drapeaux purement décoratifs, posés au-dessus du libellé.
- * Le nom accessible du lien reste `EN` / `FR` : le SVG est masqué aux lecteurs d'écran.
+ * Purely decorative flags, sitting above the label.
+ * The accessible name of the link stays `EN` / `FR`: the SVG is hidden from screen readers.
  */
 function Flag({ locale }: { locale: Locale }) {
   const common = {
@@ -56,8 +56,8 @@ type Props = {
 }
 
 /**
- * Bascule `EN | FR` vers la page courante dans l'autre langue.
- * Sans JavaScript, la cible reste atteignable mais le choix n'est pas mémorisé (§5).
+ * `EN | FR` switch to the current page in the other language.
+ * Without JavaScript, the target stays reachable but the choice is not remembered (§5).
  */
 export default function LanguageSwitcher({ locale, label, onNavigate }: Props) {
   const currentPath = stripLocale(usePathname())

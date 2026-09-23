@@ -5,9 +5,9 @@ import Button from '@/components/ui/Button'
 import { getDictionary, localizePath, resolveLocale } from '@/lib/i18n'
 
 /**
- * 404 unique du site : URL sans route correspondante comme slug de projet inconnu.
- * Le layout racine vivant sous `[locale]`, cette page rend elle-même son enveloppe HTML
- * et lit la locale dans le header `x-locale` posé par le proxy.
+ * The site's single 404: URLs with no matching route as well as unknown project slugs.
+ * Since the root layout lives under `[locale]`, this page renders its own HTML shell
+ * and reads the locale from the `x-locale` header set by the proxy.
  */
 async function requestedLocale() {
   return resolveLocale((await headers()).get('x-locale') ?? undefined)

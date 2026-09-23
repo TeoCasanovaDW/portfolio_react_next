@@ -2,8 +2,8 @@ import type { Dictionary } from '@/types/i18n'
 import type { NavigationItem } from '@/types/navigation'
 
 /**
- * Navigation principale, libellés résolus dans une locale.
- * Les `href` restent non préfixés : le préfixe est ajouté par `localizePath`.
+ * Main navigation, with labels resolved in a locale.
+ * The `href` values stay unprefixed: the prefix is added by `localizePath`.
  */
 export function getNavigation(dictionary: Dictionary): NavigationItem[] {
   return [

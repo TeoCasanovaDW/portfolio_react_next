@@ -46,7 +46,7 @@ export default function Header({ locale, items, nav }: Props) {
             ))}
           </nav>
 
-          {/* Fin de navigation desktop, à gauche du burger sur mobile */}
+          {/* End of desktop navigation, left of the burger on mobile */}
           <LanguageSwitcher locale={locale} label={nav.languageLabel} onNavigate={closeMenu} />
 
           {/* Mobile burger */}
