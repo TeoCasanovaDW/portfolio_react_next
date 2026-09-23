@@ -33,11 +33,14 @@ describe('article content integrity', () => {
 })
 
 describe('article catalogue', () => {
+  it('exposes at least one article', () => {
+    expect(articleSlugs.length).toBeGreaterThan(0)
+  })
+
   it('exposes the same articles in the same order in both languages', () => {
     for (const locale of locales) {
       expect(getArticles(locale).map((article) => article.slug)).toEqual(articleSlugs)
     }
-    expect(articleSlugs[0]).toBe('next-server-components')
   })
 
   it('sorts articles by descending date', () => {
@@ -66,18 +69,31 @@ describe('article catalogue', () => {
   })
 })
 
+/** Derived from the real content, so adding or removing an article never breaks these. */
 describe('tag filtering', () => {
-  it('narrows the list to articles carrying the tag, case-insensitively', () => {
-    expect(getArticles('en', 'React').map((article) => article.slug)).toEqual([
-      'next-server-components',
-    ])
-    expect(getArticles('en', 'REACT').map((article) => article.slug)).toEqual([
-      'next-server-components',
-    ])
+  const [sampleArticle] = articleBases
+  const sampleTag: string = sampleArticle.tags[0]
+
+  it('narrows the list to the articles carrying the tag', () => {
+    const filtered = getArticles('en', sampleTag)
+
+    expect(filtered.map((article) => article.slug)).toContain(sampleArticle.slug)
+    for (const article of filtered) {
+      expect(article.tags).toContain(sampleTag)
+    }
   })
 
-  it('returns every article when the tag is common to all of them', () => {
-    expect(getArticles('en', 'Architecture').map((article) => article.slug)).toEqual(articleSlugs)
+  it('matches a tag whatever its case, since it comes from the URL', () => {
+    const expected = getArticles('en', sampleTag).map((article) => article.slug)
+
+    expect(getArticles('en', sampleTag.toUpperCase()).map((a) => a.slug)).toEqual(expected)
+    expect(getArticles('en', sampleTag.toLowerCase()).map((a) => a.slug)).toEqual(expected)
+  })
+
+  it('matches at least one article for every tag it exposes', () => {
+    for (const tag of getAllTags()) {
+      expect(getArticles('en', tag).length).toBeGreaterThan(0)
+    }
   })
 
   it('returns an empty list for an unknown tag', () => {

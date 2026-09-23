@@ -1,5 +1,4 @@
-import NextServerComponents from '@/content/blog/fr/next-server-components.mdx'
-import TypeScriptStrictMode from '@/content/blog/fr/typescript-strict-mode.mdx'
+import LoginRedirectAiGeneratedCode from '@/content/blog/fr/login-redirect-ai-generated-code.mdx'
 import type { ArticleSlug } from './base'
 import type { ArticleContent } from '@/types/article'
 
@@ -8,14 +7,10 @@ import type { ArticleContent } from '@/types/article'
  * Each entry pairs its title, its list excerpt and its MDX body.
  */
 export const frArticles: Record<ArticleSlug, ArticleContent> = {
-  'next-server-components': {
-    title: 'Titre de l’article à rédiger',
-    excerpt: 'Phrase d’introduction affichée dans la liste des articles, à rédiger.',
-    Body: NextServerComponents,
-  },
-  'typescript-strict-mode': {
-    title: 'Titre du second article à rédiger',
-    excerpt: 'Phrase d’introduction du second article, à rédiger.',
-    Body: TypeScriptStrictMode,
+  'login-redirect-ai-generated-code': {
+    title: "Une petite redirection de connexion qui m'a fait repenser le code généré par IA",
+    excerpt:
+      "Une fonctionnalité de quatre lignes devenue une leçon sur les redirections ouvertes, le parsing d'URL, et sur le fait que la meilleure correction a été de supprimer le problème plutôt que de le valider.",
+    Body: LoginRedirectAiGeneratedCode,
   },
 }

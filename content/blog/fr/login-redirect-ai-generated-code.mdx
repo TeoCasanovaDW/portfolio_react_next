@@ -1,0 +1,211 @@
+En développant Kasa, mon application de location sous Next.js, je voulais améliorer un tout petit
+morceau du parcours d'authentification.
+
+La fonctionnalité semblait simple :
+
+> Si un utilisateur tente d'accéder à une page protégée, l'envoyer vers la connexion — puis le
+> ramener sur la page qu'il voulait au départ.
+
+C'est devenu une bonne leçon sur la validation d'URL, la sécurité, la simplicité, et sur la façon
+dont je veux travailler avec l'IA.
+
+## Le problème d'expérience utilisateur
+
+Au départ, les pages protégées se contentaient de rediriger les visiteurs non connectés vers la
+page de connexion :
+
+```ts
+if (!user) {
+  redirect('/connexion')
+}
+```
+
+Puis, une fois connecté, tout le monde atterrissait sur l'accueil :
+
+```ts
+redirect('/')
+```
+
+Le parcours ressemblait donc à ça :
+
+```
+Ajouter un logement
+→ Connexion
+→ Accueil
+→ Retrouver « Ajouter un logement »
+```
+
+Techniquement, rien ne cassait. Mais l'utilisateur perdait son intention de départ.
+
+Je voulais plutôt ça :
+
+```
+Ajouter un logement
+→ Connexion
+→ Ajouter un logement
+```
+
+La solution évidente était de faire passer la destination par l'URL :
+
+```
+/connexion?next=/ajouter-un-logement
+```
+
+Après authentification, l'application n'avait plus qu'à rediriger vers `next`.
+
+Ce qui voulait dire aussi que `next` devenait une donnée contrôlée par l'utilisateur.
+
+Et ça changeait le problème.
+
+## Première tentative : valider le chemin
+
+La première approche était directe : n'accepter que les chemins qui ressemblent à des chemins
+internes.
+
+```ts
+if (typeof raw !== 'string' || !raw.startsWith('/')) {
+  return DEFAULT_REDIRECT
+}
+
+if (raw.startsWith('//') || raw.startsWith('/\\')) {
+  return DEFAULT_REDIRECT
+}
+```
+
+Ça bloque les valeurs évidentes comme `https://evil.com`, `//evil.com` ou `/\evil.com`.
+
+Ça semblait raisonnable.
+
+Puis, en relisant l'implémentation, je me suis posé la question :
+
+> Est-ce que cette validation peut être contournée ?
+
+Plutôt que de supposer que non, je l'ai testé.
+
+Un cas limite reposait sur une tabulation : `/<TAB>/evil.com`.
+
+La chaîne passait les vérifications.
+
+Mais les parseurs d'URL suppriment certains caractères pendant la normalisation, ce qui la
+transforme en pratique en `//evil.com` — qui peut pointer vers une autre origine.
+
+Le point important : ce code n'a jamais été commité ni déployé. Le problème a été trouvé pendant le
+développement.
+
+## Deuxième tentative : laisser le parseur d'URL faire le travail
+
+Reproduire à la main les règles de parsing d'URL d'un navigateur n'était pas une bonne idée.
+
+La version suivante s'est donc appuyée sur `URL` :
+
+```ts
+const PROBE_ORIGIN = 'https://return-to.invalid'
+
+const parsed = new URL(raw, PROBE_ORIGIN)
+
+if (parsed.origin !== PROBE_ORIGIN) {
+  return DEFAULT_REDIRECT
+}
+
+return `${parsed.pathname}${parsed.search}${parsed.hash}`
+```
+
+C'était déjà nettement mieux.
+
+Au lieu de deviner comment un navigateur interprète une URL, j'utilisais le vrai parseur. Le
+contournement précédent était bloqué.
+
+Alors je me suis reposé la même question :
+
+> Est-ce que ça peut encore être contourné ?
+
+Et un autre cas intéressant est apparu : `/.//evil.com`.
+
+Au moment du parsing initial, l'URL appartenait toujours à l'origine attendue : la validation
+passait. Mais le code reconstruisait ensuite une nouvelle chaîne à partir du chemin normalisé :
+`//evil.com`.
+
+L'erreur était subtile : je validais une valeur, je la transformais, puis j'en utilisais une autre.
+La validation avait lieu avant la transformation.
+
+La solution générique pouvait être corrigée en revalidant la valeur finale. Mais à ce moment-là,
+j'ai commencé à remettre en cause le problème lui-même.
+
+## Avais-je vraiment besoin d'URL de redirection arbitraires ?
+
+Kasa n'avait pas besoin de rediriger les utilisateurs n'importe où. Il lui fallait seulement quatre
+destinations fixes.
+
+Alors plutôt que de complexifier le validateur générique, j'ai supprimé complètement le besoin
+d'URL génériques.
+
+```ts
+export const RETURN_TO = [
+  '/ajouter-un-logement',
+  '/mes-annonces',
+  '/messagerie',
+  '/profil',
+] as const
+
+export function safeNext(raw) {
+  return typeof raw === 'string' && RETURN_TO.includes(raw) ? raw : '/'
+}
+```
+
+Plus de parsing d'URL. Plus de normalisation. Plus de chemins reconstruits.
+
+Le résultat ne peut être que l'une des quatre valeurs définies directement dans le code, ou `/`.
+
+Pour ce projet, c'était suffisant.
+
+L'implémentation finale échange délibérément de la flexibilité contre de la simplicité : les
+destinations dynamiques ne sont pas conservées, et ajouter une nouvelle destination protégée
+implique de mettre à jour la liste d'autorisation.
+
+## Un dernier détail : valider côté serveur
+
+La valeur de redirection transite par le formulaire de connexion dans un champ caché.
+
+Mais un champ caché n'est pas digne de confiance sous prétexte que c'est l'interface qui l'a créé.
+N'importe qui peut envoyer une requête directement au serveur.
+
+La destination est donc validée à nouveau dans l'action d'authentification, avant d'être utilisée :
+
+```
+Page protégée
+→ Connexion
+→ Validation de la destination
+→ Champ caché du formulaire
+→ Envoi des identifiants
+→ Nouvelle validation côté serveur
+→ Redirection
+```
+
+C'est la validation côté serveur qui constitue la véritable frontière de sécurité.
+
+## Ce que ça m'a appris sur le développement assisté par IA
+
+J'ai utilisé Claude Code pendant cette fonctionnalité. Et ça a été un bon rappel de la façon dont je
+veux me servir de ce genre d'outil.
+
+L'IA peut m'aider à :
+
+- explorer des solutions plus vite ;
+- écrire du code plus vite ;
+- trouver des alternatives ;
+- itérer rapidement.
+
+Mais du code qui a l'air plausible n'est pas automatiquement correct.
+
+Le plus intéressant dans cette fonctionnalité, ce n'était pas d'écrire l'implémentation. C'était de
+me reposer sans cesse la question :
+
+> Est-ce que je peux casser ça ?
+
+Les deux approches intermédiaires semblaient raisonnables à la lecture. C'est en testant leurs
+hypothèses que les cas limites sont apparus.
+
+Et finalement, la meilleure solution n'était pas un validateur plus intelligent. C'était de
+supprimer la complexité.
+
+**L'IA me fait avancer plus vite. Le code reste le mien.**

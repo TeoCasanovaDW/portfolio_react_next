@@ -1,0 +1,206 @@
+While building Kasa, my Next.js rental application, I wanted to improve a very small part of the
+authentication flow.
+
+The feature looked simple:
+
+> If a user tries to access a protected page, send them to login — then bring them back to the page
+> they originally wanted.
+
+It ended up being a useful lesson about URL validation, security, simplicity, and how I want to use
+AI-assisted development.
+
+## The UX problem
+
+Originally, protected pages simply redirected unauthenticated users to the login page:
+
+```ts
+if (!user) {
+  redirect('/connexion')
+}
+```
+
+After a successful login, everyone was sent back to the homepage:
+
+```ts
+redirect('/')
+```
+
+So the user journey looked like this:
+
+```
+Add a property
+→ Login
+→ Homepage
+→ Find "Add a property" again
+```
+
+Nothing was technically broken, but the user lost their original intent.
+
+I wanted this instead:
+
+```
+Add a property
+→ Login
+→ Add a property
+```
+
+The obvious solution was to pass the destination through the URL:
+
+```
+/connexion?next=/ajouter-un-logement
+```
+
+After authentication, the application could simply redirect to `next`.
+
+That also meant `next` became user-controlled input.
+
+And that changed the problem.
+
+## First attempt: validating the path
+
+The first approach was straightforward: only accept internal-looking paths.
+
+```ts
+if (typeof raw !== 'string' || !raw.startsWith('/')) {
+  return DEFAULT_REDIRECT
+}
+
+if (raw.startsWith('//') || raw.startsWith('/\\')) {
+  return DEFAULT_REDIRECT
+}
+```
+
+This blocks obvious values such as `https://evil.com`, `//evil.com` or `/\evil.com`.
+
+It looked reasonable.
+
+Then, while reviewing the implementation, I asked:
+
+> Can this validation be bypassed?
+
+Instead of assuming the answer was no, I tested it.
+
+One edge case involved a tab character: `/<TAB>/evil.com`.
+
+The string passed the checks.
+
+But URL parsers remove some characters during normalization, turning it effectively into
+`//evil.com`, which can point to another origin.
+
+The important part: this code was never committed or deployed. The problem was found during
+development.
+
+## Second attempt: let the URL parser handle it
+
+Manually reproducing browser URL parsing rules wasn't a great idea.
+
+So the next version relied on `URL` itself:
+
+```ts
+const PROBE_ORIGIN = 'https://return-to.invalid'
+
+const parsed = new URL(raw, PROBE_ORIGIN)
+
+if (parsed.origin !== PROBE_ORIGIN) {
+  return DEFAULT_REDIRECT
+}
+
+return `${parsed.pathname}${parsed.search}${parsed.hash}`
+```
+
+This was already much better.
+
+Instead of guessing how a browser interprets a URL, I was using the actual parser. The previous
+bypass was blocked.
+
+So I asked the same question again:
+
+> Can this still be bypassed?
+
+And another interesting case appeared: `/.//evil.com`.
+
+During the initial parsing, the URL still belonged to the expected origin, so the validation
+passed. But the code then reconstructed a new string from the normalized pathname: `//evil.com`.
+
+The mistake was subtle: I validated one value, transformed it, then used another value. The
+validation happened before the transformation.
+
+The generic solution could be fixed by validating the final value again. But at that point, I
+started questioning the problem itself.
+
+## Did I really need arbitrary redirect URLs?
+
+Kasa didn't need to redirect users anywhere. It only needed four fixed destinations.
+
+So instead of making the generic validator more complex, I removed the need for generic URLs
+completely.
+
+```ts
+export const RETURN_TO = [
+  '/ajouter-un-logement',
+  '/mes-annonces',
+  '/messagerie',
+  '/profil',
+] as const
+
+export function safeNext(raw) {
+  return typeof raw === 'string' && RETURN_TO.includes(raw) ? raw : '/'
+}
+```
+
+No URL parsing. No normalization. No reconstructed paths.
+
+The result can only be one of four values defined directly in the code, or `/`.
+
+For this project, that was enough.
+
+The final implementation deliberately trades flexibility for simplicity: dynamic destinations are
+not preserved, and adding a new protected destination means updating the allowlist.
+
+## One more detail: validate on the server
+
+The redirect value travels through the login form using a hidden field.
+
+But a hidden field isn't trustworthy just because the UI created it. Anyone can send a request
+directly to the server.
+
+So the destination is validated again inside the authentication action before being used:
+
+```
+Protected page
+→ Login
+→ Validate destination
+→ Hidden form field
+→ Submit credentials
+→ Validate again on the server
+→ Redirect
+```
+
+The server-side validation is the actual security boundary.
+
+## What this taught me about AI-assisted development
+
+I used Claude Code while working on this feature. And this was a good reminder of how I want to use
+tools like it.
+
+AI can help me:
+
+- explore solutions faster;
+- write code faster;
+- find alternatives;
+- iterate quickly.
+
+But plausible-looking code isn't automatically correct.
+
+The interesting part of this feature wasn't just writing the implementation. It was repeatedly
+asking:
+
+> Can I break this?
+
+Both intermediate approaches looked reasonable when reading them. Testing their assumptions is what
+exposed the edge cases.
+
+And eventually, the best solution wasn't a smarter validator. It was removing the complexity
+entirely.
+
+**AI helps me move faster. I still own the code.**
