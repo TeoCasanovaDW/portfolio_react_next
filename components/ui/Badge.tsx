@@ -1,4 +1,4 @@
-type Variant = 'light' | 'dark' | 'overlay'
+type Variant = 'light' | 'dark' | 'overlay' | 'accent'
 
 type Props = {
   label: string
@@ -10,6 +10,7 @@ const variantClasses: Record<Variant, string> = {
   light: 'bg-white text-[#121212] border border-[#dadada]',
   dark: 'bg-surface text-white border border-white/10',
   overlay: 'bg-surface/80 text-accent border border-white/15 backdrop-blur-sm shadow-md',
+  accent: 'bg-accent text-[#121212] border border-accent',
 }
 
 export default function Badge({ label, variant = 'dark', icon }: Props) {

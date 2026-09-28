@@ -18,7 +18,7 @@ export default function ArticleCard({ article, href, dateLabel, readingLabel }: 
       <div className="p-6 flex flex-col gap-4">
         <div className="flex items-center justify-between text-xs text-text-secondary">
           <time dateTime={article.date}>{dateLabel}</time>
-          <span>{readingLabel}</span>
+          <Badge label={readingLabel} variant="accent" />
         </div>
 
         <div>

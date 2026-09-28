@@ -61,8 +61,10 @@ export default async function ArticlePage({ params }: Props) {
       <div className="mb-12">
         <div className="flex items-center gap-3 text-xs text-text-secondary mb-4">
           <time dateTime={article.date}>{formatArticleDate(article.date, locale)}</time>
-          <span aria-hidden="true">·</span>
-          <span>{copy.readingTime.replace('{minutes}', String(article.readingMinutes))}</span>
+          <Badge
+            label={copy.readingTime.replace('{minutes}', String(article.readingMinutes))}
+            variant="accent"
+          />
         </div>
         <h1 className="font-heading text-3xl md:text-4xl font-semibold text-white mb-6">
           {article.title}
