@@ -6,6 +6,12 @@ import type { ArticleBase } from '@/types/article'
  */
 export const articleBases = [
   {
+    slug: 'from-ai-questions-to-project-structure',
+    date: '2026-09-28',
+    readingMinutes: 5,
+    tags: ['AI', 'Workflow'],
+  },
+  {
     slug: 'login-redirect-ai-generated-code',
     date: '2026-09-23',
     readingMinutes: 6,

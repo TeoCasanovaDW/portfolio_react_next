@@ -45,7 +45,7 @@ export default async function ArticlePage({ params }: Props) {
   const { Body } = article
 
   return (
-    <div className="max-w-[720px] mx-auto px-6 py-16">
+    <div className="max-w-[900px] mx-auto px-6 py-16">
       {/* Back link */}
       <div className="mb-14">
         <Button

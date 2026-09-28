@@ -1,0 +1,200 @@
+Ma manière d’utiliser l’IA pour développer n’a pas changé du jour au lendemain. Elle a surtout évolué
+à partir de petites frictions qui ont fini par modifier ma façon d’organiser mes projets.
+
+Au début, j’utilisais ChatGPT de manière classique : je rencontrais un bug, j’ouvrais l’interface
+web, je collais du code et je posais ma question.
+
+Ça fonctionnait, mais j’ai rapidement remarqué que la qualité de la réponse dépendait énormément du
+contexte fourni.
+
+## Plus de contexte, de meilleures réponses
+
+Ma première amélioration a donc été simple : au lieu d’envoyer uniquement l’erreur ou la fonction
+suspecte, j’ai commencé à fournir les fichiers et extraits nécessaires pour comprendre réellement le
+problème.
+
+Mes requêtes sont devenues beaucoup plus longues :
+
+- j’expliquais le contexte du projet ;
+- je décrivais le problème ;
+- je collais les fichiers concernés ;
+- je détaillais ce que j’avais déjà essayé.
+
+Les réponses devenaient plus pertinentes, mais le workflow devenait aussi plus fastidieux.
+
+### La boucle du copier-coller
+
+Je passais constamment de VS Code à ChatGPT :
+
+1. récupérer le code pertinent ;
+2. construire un gros prompt ;
+3. obtenir une réponse ;
+4. recopier les changements dans le projet ;
+5. les relire et les tester ;
+6. si ça échouait, renvoyer le code mis à jour.
+
+Le problème n’était donc plus seulement de savoir « comment écrire un meilleur prompt ».
+
+> Je passais surtout du temps à reconstruire un contexte qui existait déjà dans le projet.
+
+## Rapprocher l’IA du code
+
+Je suis ensuite passé à Claude Code.
+
+### Claude Code, mais pas encore de process
+
+Au début, mon fonctionnement n’avait pas fondamentalement changé. Je lui donnais encore des
+instructions directes du type :
+
+> Crée ceci. Corrige cela.
+
+L’outil avait accès au projet, donc je n’avais plus besoin de copier mes fichiers dans une
+conversation web. Mais je n’avais pas encore de véritable process.
+
+### Donner une structure au projet
+
+L’étape suivante s’est construite progressivement : au lieu de simplement donner à l’IA accès au
+code, j’ai commencé à donner au projet **une structure explicite pour préparer puis exécuter le
+travail**.
+
+Aujourd’hui, un nouveau projet démarre approximativement comme ceci :
+
+```
+.claude/
+  skills/
+    sdd-spec/
+    sdd-task/
+
+docs/
+  mockups/
+
+specs/
+  _template.md
+  00-project-scope.md
+  01-...
+  02-...
+```
+
+### Le scope du projet
+
+`00-project-scope.md` sert de référence globale. Je le définis généralement avec ChatGPT avant
+l’implémentation. Il regroupe :
+
+- les limites du projet ;
+- les décisions importantes ;
+- les règles communes ;
+- la liste des specs à produire.
+
+### Un même template pour chaque spec
+
+`_template.md` donne la même structure à chaque spec :
+
+- objectif ;
+- contexte ;
+- scope ;
+- contraintes ;
+- comportement attendu ;
+- tâches ;
+- vérifications ;
+- validation finale.
+
+### Deux skills : préparer, puis exécuter
+
+Deux skills Claude Code séparent ensuite la préparation de l’exécution :
+
+- `sdd-spec` sert à rédiger une spec ;
+- `sdd-task` sert à exécuter les tâches de cette spec, une par une.
+
+Cela reste volontairement un SDD simple. Le but n’est pas de produire de gros documents.
+
+Il s’agit plutôt de garder chaque spec **courte et centrée sur un incrément cohérent**.
+
+## Un exemple concret
+
+La suppression d’une annonce est un bon exemple récent. La fonctionnalité ne consistait pas
+seulement à « ajouter un bouton supprimer ».
+
+### Ce que la spec a révélé
+
+En préparant la spec, deux problèmes existants sont apparus :
+
+- n’importe quel utilisateur avec le rôle `owner` pouvait modifier ou supprimer la propriété d’un
+  autre propriétaire ;
+- le helper API partagé essayait toujours de parser du JSON, alors que l’endpoint DELETE renvoyait
+  une réponse `204` vide.
+
+### Quatre tâches bornées
+
+La spec a posé ces contraintes, puis découpé l’implémentation en quatre tâches :
+
+```
+T1 — Backend: host-only edit and delete
+T2 — Frontend: deletion action
+T3 — Trash icon on /mes-annonces
+T4 — Delete button on the detail page
+```
+
+Chaque tâche précise les fichiers concernés, ce qui doit être implémenté et comment le vérifier.
+
+La première règle les permissions backend. La deuxième adapte le flux API frontend à la réponse
+`204` et crée l’action de suppression.
+
+Les deux suivantes ajoutent la boîte de confirmation et les deux points d’entrée dans l’interface.
+
+### Plus simple à relire
+
+C’est plus simple à relire qu’une demande large du type :
+
+> Implémente la suppression des annonces.
+
+L’IA reçoit **une tâche bornée, des contraintes claires et une méthode de validation**.
+
+## Ce qui a réellement changé
+
+Ce que je retiens surtout de cette évolution, c’est qu’elle ne vient pas principalement du fait
+d’avoir trouvé un meilleur modèle.
+
+Les outils se sont améliorés, évidemment. Passer d’un chat dans le navigateur à un agent capable de
+lire directement le repository m’a supprimé beaucoup de friction.
+
+Mais mon principal gain vient surtout de **la manière dont le contexte est organisé**.
+
+### Le contexte vit dans le projet
+
+Avant, une grande partie du contexte vivait dans un prompt et je devais le reconstruire presque à
+chaque problème.
+
+Aujourd’hui, une partie de ce contexte vit directement dans le projet :
+
+```
+project scope
+    ↓
+feature spec
+    ↓
+small tasks
+    ↓
+implementation
+    ↓
+verification
+```
+
+### Je garde l’ownership du code
+
+Cela m’aide aussi à garder l’ownership du code généré. Je continue à :
+
+- relire les changements ;
+- lancer les tests ;
+- vérifier le comportement ;
+- décider si l’implémentation a réellement sa place dans le projet.
+
+Le process ne remplace pas ces décisions. Il donne simplement de meilleures limites à l’IA avant
+qu’elle modifie le code.
+
+## Ce que j’en retiens
+
+Après plusieurs projets avec cette approche, mon principal constat est simple :
+
+> Améliorer mes prompts m’a aidé, mais améliorer le contexte et le workflow m’a beaucoup plus aidé.
+
+Je passe moins de temps à réexpliquer mon projet, et davantage à relire des changements concrets et
+bien délimités.

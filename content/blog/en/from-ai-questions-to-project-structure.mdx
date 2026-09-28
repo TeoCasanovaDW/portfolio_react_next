@@ -1,0 +1,196 @@
+My use of AI for development did not change overnight. It evolved through a few small frustrations
+that eventually changed the way I organize my projects.
+
+At first, I used ChatGPT like most developers probably did: I hit a bug, opened the web app, pasted
+some code, and asked a question.
+
+That worked, but I quickly noticed that the quality of the answer depended heavily on the context I
+provided.
+
+## More context, better answers
+
+My first improvement was simple: instead of sending only the error or the suspicious function, I
+started giving ChatGPT the files and code snippets it needed to understand the problem.
+
+A typical request gradually became much larger. I would:
+
+- explain the project context;
+- describe the issue;
+- paste the relevant files;
+- list what I had already tried and what had failed.
+
+The answers became more accurate, but the workflow became increasingly tedious.
+
+### The copy-paste loop
+
+I was constantly moving between VS Code and ChatGPT:
+
+1. collect the relevant code;
+2. build a large prompt;
+3. wait for an answer;
+4. copy the proposed changes back into the project;
+5. review them;
+6. test them;
+7. if they failed, send the updated code again.
+
+The problem was no longer only “how good is the prompt?”.
+
+> I was spending a lot of time rebuilding context that already existed inside the project.
+
+## Moving the AI closer to the codebase
+
+I later moved to Claude Code.
+
+### Claude Code, but no process yet
+
+At first, my workflow was not fundamentally different. I was still giving direct instructions such
+as:
+
+> Create this. Fix that.
+
+The tool had much better access to the project, so I no longer had to copy files into a browser
+conversation. But I still did not have a clear process.
+
+### Giving the project a structure
+
+The next improvement came gradually: instead of only giving the AI access to the codebase, I started
+giving the project **an explicit structure for how work should be planned and executed**.
+
+A new project now starts roughly like this:
+
+```
+.claude/
+  skills/
+    sdd-spec/
+    sdd-task/
+
+docs/
+  mockups/
+
+specs/
+  _template.md
+  00-project-scope.md
+  01-...
+  02-...
+```
+
+### The project scope
+
+`00-project-scope.md` is the reference for the whole project. I usually define it with ChatGPT
+before implementation starts. It contains:
+
+- the project boundaries;
+- important decisions;
+- global technical rules;
+- the roadmap of specs to write.
+
+### One template for every spec
+
+`_template.md` gives every spec the same execution-oriented structure:
+
+- goal;
+- context;
+- scope;
+- constraints;
+- expected behavior;
+- tasks;
+- verification;
+- final validation.
+
+### Two skills: planning vs execution
+
+Then the two Claude Code skills separate planning from execution:
+
+- `sdd-spec` is used to write a spec;
+- `sdd-task` is used to execute the tasks from that spec, one at a time.
+
+This is still a simple SDD workflow. The point is not to generate large documents.
+
+In fact, I try to keep each spec **short and focused on one coherent increment**.
+
+## A concrete example
+
+A recent property deletion feature is a good example. The implementation was not just “add a delete
+button”.
+
+### What the spec uncovered
+
+While preparing the spec, the existing behavior exposed two backend issues:
+
+- any user with the `owner` role could edit or delete another owner's property;
+- the shared API helper always tried to parse JSON, even though the DELETE endpoint returned an
+  empty `204` response.
+
+### Four bounded tasks
+
+The spec captured those constraints first, then split the implementation into four tasks:
+
+```
+T1 — Backend: host-only edit and delete
+T2 — Frontend: deletion action
+T3 — Trash icon on /mes-annonces
+T4 — Delete button on the detail page
+```
+
+Each task lists the files involved, the expected implementation, and how to verify it.
+
+For example, the first task defines the authorization behavior before touching the UI. The second
+adapts the frontend API flow to the `204` response and adds the deletion action.
+
+Only then do the UI tasks add the confirmation dialog and the two deletion entry points.
+
+### Easier to review
+
+That makes the implementation easier to review, because I am not asking the AI for one broad
+request like:
+
+> Implement property deletion.
+
+I am giving it **a bounded piece of work with explicit constraints and a verification step**.
+
+## What actually changed
+
+The interesting part for me is that this evolution was not mainly about finding a better model.
+
+Better models and better tooling helped, of course. Moving from a browser chat to an agent that can
+inspect the repository removed a lot of friction.
+
+But the larger improvement came from **changing the context around the model**.
+
+### Context now lives in the project
+
+Before, the context lived mostly inside one prompt, and I had to reconstruct it every time.
+
+Now, part of that context lives in the project itself:
+
+```
+project scope
+    ↓
+feature spec
+    ↓
+small tasks
+    ↓
+implementation
+    ↓
+verification
+```
+
+### I still own the code
+
+That also makes AI-generated code easier to own. I still:
+
+- review the changes;
+- run the tests;
+- check the behavior;
+- decide whether the implementation belongs in the project.
+
+The process does not replace those decisions. It gives the AI clearer boundaries before it starts
+changing code.
+
+## My takeaway
+
+My main takeaway after using AI this way for several projects is simple:
+
+> Improving prompts helped, but improving context and workflow helped much more.
+
+I spend less time re-explaining the project, and more time reviewing concrete, scoped changes.
