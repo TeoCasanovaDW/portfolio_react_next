@@ -20,6 +20,7 @@ export type IconName =
   | 'monitoring'
   | 'link'
   | 'send'
+  | 'sendLight'
 
 export type TechLogo =
   | 'javascript'
@@ -34,6 +35,7 @@ export type TechLogo =
   | 'git'
   | 'github'
   | 'vitest'
+  | 'storybook'
   | 'agile'
   | 'sdd'
   | 'auth'

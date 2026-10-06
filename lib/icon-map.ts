@@ -22,6 +22,7 @@ export const iconMap: Record<IconName, string> = {
   monitoring: '/icons/features/monitoring.svg',
   link: '/icons/features/link.svg',
   send: '/icons/ui/send.svg',
+  sendLight: '/icons/features/send-light.svg',
 }
 
 export const techLogoMap: Record<TechLogo, string> = {
@@ -37,6 +38,7 @@ export const techLogoMap: Record<TechLogo, string> = {
   git: '/icons/tech/git.svg',
   github: '/icons/tech/github.svg',
   vitest: '/icons/tech/vitest.svg',
+  storybook: '/icons/tech/storybook.svg',
   agile: '/icons/tech/agile.svg',
   sdd: '/icons/tech/sdd.svg',
   auth: '/icons/tech/auth.svg',

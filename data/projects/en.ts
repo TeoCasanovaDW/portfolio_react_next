@@ -24,6 +24,7 @@ export const enProjects: Record<ProjectSlug, ProjectContent> = {
       'Upload handling for property photos and user avatars',
       'Context API and localStorage to manage favorites without adding backend complexity',
       'Vitest and React Testing Library to cover critical behaviors and components',
+      'Storybook to build and document UI components in isolation',
       'Vercel for the Next.js frontend and Railway with a persistent volume for the backend, SQLite and uploads',
     ],
     featureLabels: [

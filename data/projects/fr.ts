@@ -24,6 +24,7 @@ export const frProjects: Record<ProjectSlug, ProjectContent> = {
       'Système d’upload pour les photos de logements et les avatars utilisateurs',
       'Context API et localStorage pour gérer les favoris sans complexifier le backend',
       'Vitest et React Testing Library pour couvrir les comportements et composants critiques',
+      'Storybook pour construire et documenter les composants d’interface de façon isolée',
       'Vercel pour le frontend Next.js et Railway avec volume persistant pour le backend, SQLite et les uploads',
     ],
     featureLabels: [

@@ -22,7 +22,7 @@ export const projectBases = [
         variant: 'dark',
       },
     ],
-    techLogos: ['next', 'typescript', 'react', 'node', 'auth', 'vitest', 'vercel'],
+    techLogos: ['next', 'typescript', 'react', 'node', 'auth', 'vitest', 'storybook', 'vercel'],
     stack: [
       'Next.js App Router',
       'TypeScript',
@@ -32,6 +32,7 @@ export const projectBases = [
       'SQLite',
       'JWT',
       'Vitest / RTL',
+      'Storybook',
       'Vercel',
       'Railway',
       'GitHub Actions',
@@ -39,7 +40,7 @@ export const projectBases = [
     featureIcons: [
       'auth',
       'copyLight',
-      'send',
+      'sendLight',
       'filter',
       'logout',
       'sync',
