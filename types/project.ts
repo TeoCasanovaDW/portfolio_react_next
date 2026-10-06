@@ -59,6 +59,15 @@ export type ProjectFeature = {
 /** Project link without its label: the untranslated part of a link. */
 export type ProjectLinkBase = Omit<ProjectLink, 'label'>
 
+/** Category of a stack group; its label is translated in the dictionary (`project.stackCategories`). */
+export type StackCategory = 'frontend' | 'backend' | 'database' | 'testing' | 'deployment' | 'tools'
+
+/** Technologies of a project belonging to the same category. */
+export type StackGroup = {
+  category: StackCategory
+  items: readonly string[]
+}
+
 /**
  * Untranslated part of a project: identity, media, links, stack and icons.
  * Shared by both languages.
@@ -70,7 +79,7 @@ export type ProjectBase = {
   image: string
   links: readonly ProjectLinkBase[]
   techLogos: readonly TechLogo[]
-  stack: readonly string[]
+  stack: readonly StackGroup[]
   featureIcons: readonly IconName[]
 }
 
@@ -103,7 +112,7 @@ export type Project = {
   links: ProjectLink[]
   tags: string[]
   techLogos: TechLogo[]
-  stack: string[]
+  stack: StackGroup[]
   context: string
   technicalChoices: string[]
   features: ProjectFeature[]

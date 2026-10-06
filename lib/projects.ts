@@ -20,7 +20,7 @@ function resolveProject(base: ProjectBase, content: ProjectContent): Project {
     links: base.links.map((link, index) => ({ ...link, label: content.linkLabels[index] })),
     tags: content.tags,
     techLogos: [...base.techLogos],
-    stack: [...base.stack],
+    stack: base.stack.map((group) => ({ category: group.category, items: [...group.items] })),
     context: content.context,
     technicalChoices: content.technicalChoices,
     features: base.featureIcons.map((icon, index) => ({

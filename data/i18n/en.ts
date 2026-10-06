@@ -135,6 +135,14 @@ export const en = {
   project: {
     context: 'Context',
     stack: 'Stack',
+    stackCategories: {
+      frontend: 'Frontend',
+      backend: 'Backend',
+      database: 'Database',
+      testing: 'Testing',
+      deployment: 'Deployment & CI',
+      tools: 'Tools',
+    },
     technicalChoices: 'Technical choices',
     features: 'Features',
     demonstrates: 'What this project demonstrates',

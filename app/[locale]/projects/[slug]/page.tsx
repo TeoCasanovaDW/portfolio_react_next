@@ -119,11 +119,23 @@ export default async function ProjectPage({ params }: Props) {
               <h2 className="font-heading text-xl font-semibold text-white mb-5 md:mb-0 md:w-40 shrink-0">
                 {labels.stack}
               </h2>
-              <div className="flex flex-wrap gap-2">
-                {project.stack.map((item) => (
-                  <Badge key={item} label={item} variant="light" />
+              <dl className="flex-1 space-y-5">
+                {project.stack.map((group) => (
+                  <div
+                    key={group.category}
+                    className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-6"
+                  >
+                    <dt className="text-sm text-text-secondary sm:w-40 shrink-0">
+                      {labels.stackCategories[group.category]}
+                    </dt>
+                    <dd className="flex flex-wrap gap-2">
+                      {group.items.map((item) => (
+                        <Badge key={item} label={item} variant="light" />
+                      ))}
+                    </dd>
+                  </div>
                 ))}
-              </div>
+              </dl>
             </div>
           </div>
         </section>

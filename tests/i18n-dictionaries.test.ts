@@ -58,6 +58,8 @@ describe('dictionary parity', () => {
       'contact.form.message',
       'contact.form.emailPlaceholder',
       'project.stack',
+      'project.stackCategories.frontend',
+      'project.stackCategories.backend',
       'projects.workInProgress',
       'metadata.project.title',
       'blog.title',

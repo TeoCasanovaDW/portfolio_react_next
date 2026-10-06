@@ -134,6 +134,14 @@ export const fr: Dictionary = {
   project: {
     context: 'Contexte',
     stack: 'Stack',
+    stackCategories: {
+      frontend: 'Frontend',
+      backend: 'Backend',
+      database: 'Base de données',
+      testing: 'Tests',
+      deployment: 'Déploiement & CI',
+      tools: 'Outils',
+    },
     technicalChoices: 'Choix techniques',
     features: 'Fonctionnalités',
     demonstrates: 'Ce que ce projet démontre',
