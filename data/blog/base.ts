@@ -6,6 +6,12 @@ import type { ArticleBase } from '@/types/article'
  */
 export const articleBases = [
   {
+    slug: 'learning-graphql-with-less-helpful-ai',
+    date: '2026-10-06',
+    readingMinutes: 4,
+    tags: ['AI', 'Learning'],
+  },
+  {
     slug: 'from-ai-questions-to-project-structure',
     date: '2026-09-28',
     readingMinutes: 5,

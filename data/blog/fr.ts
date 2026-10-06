@@ -1,5 +1,6 @@
 import LoginRedirectAiGeneratedCode from '@/content/blog/fr/login-redirect-ai-generated-code.mdx'
 import FromAiQuestionsToProjectStructure from '@/content/blog/fr/from-ai-questions-to-project-structure.mdx'
+import LearningGraphqlWithLessHelpfulAi from '@/content/blog/fr/learning-graphql-with-less-helpful-ai.mdx'
 import type { ArticleSlug } from './base'
 import type { ArticleContent } from '@/types/article'
 
@@ -8,6 +9,12 @@ import type { ArticleContent } from '@/types/article'
  * Each entry pairs its title, its list excerpt and its MDX body.
  */
 export const frArticles: Record<ArticleSlug, ArticleContent> = {
+  'learning-graphql-with-less-helpful-ai': {
+    title: 'Apprendre GraphQL en rendant volontairement l’IA moins utile',
+    excerpt:
+      'Comment j’ai construit un petit système d’apprentissage autour de ChatGPT : une notion par conversation, des indices avant les réponses et des sujets volontairement repoussés à plus tard.',
+    Body: LearningGraphqlWithLessHelpfulAi,
+  },
   'from-ai-questions-to-project-structure': {
     title: 'De questions posées à l’IA à un projet structuré pour elle',
     excerpt:

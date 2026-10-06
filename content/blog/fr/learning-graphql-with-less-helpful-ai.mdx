@@ -1,0 +1,175 @@
+J’ai récemment commencé à apprendre GraphQL avec ChatGPT. Mais plutôt que de simplement lui demander
+de « m’apprendre GraphQL », j’ai construit un petit système d’apprentissage autour de l’outil.
+
+L’idée principale est assez contre-intuitive : je ne voulais pas que l’IA m’aide au maximum.
+
+> Je voulais qu’elle m’aide **au bon moment**.
+
+Cela impliquait de :
+
+- contrôler la progression ;
+- séparer les notions ;
+- empêcher ChatGPT d’introduire certains concepts trop tôt ;
+- parfois lui demander explicitement de ne pas me donner la réponse.
+
+## Un projet et des règles globales
+
+J’ai créé un projet ChatGPT entièrement consacré à GraphQL, avec des instructions globales qui
+s’appliquent à toutes les conversations. Les règles essentielles sont simples :
+
+**Règles d’apprentissage**
+
+```
+Ne pas sauter d'étapes.
+Rester dans le sujet de la conversation.
+Ne pas introduire les notions prévues plus tard.
+Ne pas me donner immédiatement la solution.
+Me laisser chercher par moi-même.
+Donner un indice avant de donner la réponse.
+```
+
+### D’un outil à un parcours
+
+Cela change la place de ChatGPT dans mon apprentissage. Au lieu d’avoir un outil auquel je peux
+demander n’importe quoi à n’importe quel moment, j’ai un parcours avec des limites.
+
+Si je suis en train d’apprendre les resolvers, je ne veux pas que la discussion parte soudainement
+sur DataLoader ou une architecture de base de données simplement parce que ces sujets sont liés.
+
+> Ils seront probablement utiles. Mais pas encore.
+
+## Une notion par conversation
+
+Je ne voulais pas non plus apprendre GraphQL dans une seule conversation interminable. J’ai séparé
+le parcours en plusieurs discussions ayant chacune un objectif précis :
+
+**Découpage des conversations**
+
+```
+01 — Modèle mental
+02 — Schema / Query / Mutation
+03 — Resolvers
+04 — Intégration React
+05 — Révision finale
+```
+
+### Des objectifs volontairement limités
+
+Chaque conversation reste volontairement limitée :
+
+- quand j’apprenais le modèle mental, React n’était pas nécessaire ;
+- quand je travaillais sur Schema, Query et Mutation, je n’avais pas besoin de parler de cache ;
+- quand j’apprenais les resolvers, j’ai volontairement laissé Prisma et les bases de données de
+  côté.
+
+Je voulais comprendre chaque pièce avant d’en ajouter une nouvelle.
+
+### Adapter le parcours
+
+Cette organisation m’a également permis d’adapter le parcours. À un moment, une étape prévue
+commençait à répéter des notions sur Query et Mutation que j’avais déjà suffisamment travaillées.
+J’ai donc réorganisé le programme au lieu de suivre mécaniquement le plan initial.
+
+> Le parcours doit servir mon apprentissage, pas l’inverse.
+
+## Me laisser galérer
+
+La règle la plus importante concerne probablement les exercices. ChatGPT est extrêmement efficace
+pour supprimer une difficulté. C’est pratique lorsque j’essaie de terminer une fonctionnalité, mais
+beaucoup moins lorsque cette difficulté est précisément ce que j’essaie d’apprendre.
+
+Si je bloque sur un resolver et que ChatGPT me montre immédiatement l’implémentation complète, je
+peux très bien comprendre le code en le lisant sans être capable de le reproduire seul.
+
+J’ai donc volontairement organisé les exercices autrement :
+
+**Boucle d’exercice**
+
+```
+Comprendre une notion
+       ↓
+Recevoir un petit exercice
+       ↓
+Chercher seul
+       ↓
+Expliquer mon raisonnement
+       ↓
+Recevoir un retour
+       ↓
+Indice si nécessaire
+       ↓
+Solution uniquement en dernier recours
+```
+
+### Rester bloqué volontairement
+
+Je veux pouvoir rester bloqué quelque temps. Si je pars dans la mauvaise direction, ChatGPT peut me
+donner un indice sans immédiatement remplacer mon raisonnement par le sien.
+
+L’objectif n’est pas de terminer l’exercice rapidement. L’objectif est d’arriver au point où **je
+peux expliquer moi-même pourquoi la solution fonctionne**.
+
+## Contrôler ce qui viendra plus tard
+
+J’ai également volontairement exclu plusieurs sujets de mon premier parcours GraphQL :
+
+**Pas encore**
+
+```
+Cache
+DataLoader
+Codegen
+Intégration d'une base de données
+Pagination
+Federation
+Subscriptions
+Architecture avancée
+```
+
+### Ordonner, pas éviter
+
+Je ne cherche pas à éviter ces sujets. Je cherche simplement à les apprendre dans le bon ordre.
+
+Ajouter une base de données lorsque j’apprends les resolvers, par exemple, introduirait une
+abstraction supplémentaire exactement au moment où j’essaie de comprendre ce qu’un resolver reçoit
+et ce qu’il retourne.
+
+Utiliser d’abord des données simples me permet d’isoler le concept. Je peux ensuite ajouter une
+infrastructure plus réaliste une fois le modèle mental stabilisé.
+
+## Retester ce que j’ai appris
+
+Il reste enfin une étape importante : je ne considère pas automatiquement que je « connais GraphQL »
+simplement parce que j’ai terminé toutes les conversations prévues.
+
+À la fin du parcours, je reviens sur les bases pour les tester à nouveau :
+
+- est-ce que je peux expliquer le chemin d’une requête ?
+- est-ce que je comprends la différence entre le rôle du schema et celui d’un resolver ?
+- est-ce que je peux écrire une Query ou une Mutation sans être guidé étape par étape ?
+- est-ce que je peux relier les concepts sans dépendre de l’ordre dans lequel ChatGPT me les a
+  expliqués ?
+
+> Reconnaître une explication lorsqu’on la lit n’est pas la même chose que réussir à la retrouver et
+> à l’appliquer seul.
+
+C’est pour cela que cette dernière vérification compte.
+
+## La contrainte utile
+
+J’avais tendance à penser que mieux apprendre avec une IA consistait surtout à trouver de meilleurs
+prompts ou à poser de meilleures questions. Mon apprentissage de GraphQL m’a apporté une nuance.
+
+L’IA sait déjà très bien me donner davantage d’informations. La vraie difficulté consiste plutôt à
+décider :
+
+- ce que je dois apprendre maintenant ;
+- ce qui doit attendre ;
+- quand l’IA doit m’aider ;
+- et quand elle doit simplement me laisser chercher.
+
+Dans ce type d’apprentissage, l’instruction la plus utile n’est parfois pas « explique-moi mieux ».
+
+C’est plutôt :
+
+> **« Ne me dis pas encore ça. »**

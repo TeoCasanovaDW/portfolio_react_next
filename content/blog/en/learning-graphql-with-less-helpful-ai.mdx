@@ -1,0 +1,170 @@
+I recently started learning GraphQL with ChatGPT. But instead of asking it to “teach me GraphQL”, I
+built a small learning system around it.
+
+The main idea was slightly counter-intuitive: I did not want the AI to be as helpful as possible.
+
+> I wanted it to help me **at the right time**.
+
+That meant:
+
+- controlling the progression;
+- separating concepts;
+- preventing it from introducing future topics too early;
+- sometimes explicitly asking it not to give me the answer.
+
+## One project, one set of rules
+
+I created a dedicated ChatGPT project for learning GraphQL, with a global instruction that applies
+to every conversation. The important rules are simple:
+
+**AI learning rules**
+
+```
+Don't skip steps.
+Stay within the topic of the current conversation.
+Don't introduce concepts planned for later.
+Don't give me the solution immediately.
+Let me try and struggle first.
+Give hints before answers.
+```
+
+### From a tool to a learning path
+
+This changes the role of ChatGPT. Instead of being a tool I can ask anything at any moment, it
+becomes part of a learning path with boundaries.
+
+If I am currently learning resolvers, I do not want the conversation to suddenly become a lesson
+about DataLoader or database architecture just because those topics are related.
+
+> They may be useful later. They are simply not useful **yet**.
+
+## One concept per conversation
+
+I also avoided putting the entire learning journey into one huge chat. I split it into several
+conversations, each with a specific purpose:
+
+**Conversation boundaries**
+
+```
+01 — Mental model
+02 — Schema / Query / Mutation
+03 — Resolvers
+04 — React integration
+05 — Final review
+```
+
+### Narrow objectives
+
+Each conversation starts with a narrow objective:
+
+- while learning the mental model, I did not need React;
+- while working on schema, Query and Mutation, I did not need caching;
+- while learning resolvers, I deliberately avoided adding Prisma or another database layer.
+
+The goal was to understand one moving part before adding another one.
+
+### Adjusting the path
+
+That also made it easier to notice when the learning path needed adjustment. At one point, a planned
+step started repeating Query and Mutation concepts I had already covered. Rather than blindly
+following the initial roadmap, I reorganised it and moved forward.
+
+> The structure exists to support the learning, not the other way around.
+
+## Letting myself struggle
+
+The biggest rule concerns exercises. ChatGPT is extremely good at removing friction. That is useful
+when I am trying to ship something, but not always when I am trying to learn.
+
+If I get stuck on a resolver and immediately receive the finished implementation, I can understand
+the answer when I read it without necessarily being able to produce it myself.
+
+So I deliberately changed the interaction:
+
+**Exercise loop**
+
+```
+Learn one concept
+      ↓
+Get a small exercise
+      ↓
+Try it myself
+      ↓
+Explain my reasoning
+      ↓
+Get feedback
+      ↓
+Hint if necessary
+      ↓
+Solution only as a last resort
+```
+
+### Being stuck on purpose
+
+I want to spend some time being stuck. If my approach is wrong, ChatGPT can point me in the right
+direction without immediately replacing my reasoning with its own.
+
+The goal is not to complete an exercise quickly. The goal is to reach the point where **I can
+explain why the solution works**.
+
+## Controlling what comes later
+
+I also explicitly kept several GraphQL topics outside the first learning path:
+
+**Not yet**
+
+```
+Caching
+DataLoader
+Code generation
+Database integration
+Pagination
+Federation
+Subscriptions
+Advanced architecture
+```
+
+### Sequencing, not avoiding
+
+I am not avoiding those topics. I am sequencing them.
+
+For example, adding a database while learning resolvers would introduce another abstraction at
+exactly the moment when I am trying to understand what a resolver receives and returns.
+
+Using simple data first lets me isolate the concept. Once the mental model is stable, I can add more
+realistic infrastructure without confusing the two problems.
+
+## Testing understanding again
+
+There is one last part of the process that matters to me: I do not want finishing the conversations
+to automatically mean that I “know GraphQL”.
+
+After going through the learning path, I return to the fundamentals and test them again:
+
+- can I explain the request flow?
+- can I distinguish the role of the schema from the resolver?
+- can I write a Query or Mutation without being guided step by step?
+- can I connect the ideas together without relying on the order in which ChatGPT originally
+  explained them?
+
+> Recognising an explanation is very different from recalling and applying it yourself.
+
+That is why this final pass is important.
+
+## The useful constraint
+
+I used to think improving learning with AI mostly meant finding better prompts or asking better
+questions. This experience with GraphQL changed that a little.
+
+The AI already knows how to give me more information. The harder problem is deciding:
+
+- what I should learn now;
+- what should wait;
+- when I should receive help;
+- and when the AI should simply let me struggle.
+
+For this kind of learning, the most valuable instruction is sometimes not “explain this better”.
+
+It is:
+
+> **“Don’t tell me that yet.”**
