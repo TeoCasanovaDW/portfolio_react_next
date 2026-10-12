@@ -35,6 +35,10 @@ export const fr: Dictionary = {
     article: {
       title: '{title} | Téo Casanova',
     },
+    books: {
+      title: 'Livres | Téo Casanova',
+      description: "Les livres que je lis en ce moment et ceux que j'ai lus et aimés.",
+    },
     notFound: {
       title: 'Page introuvable | Téo Casanova',
       description: "Cette page n'existe pas ou a été déplacée.",
@@ -69,6 +73,25 @@ export const fr: Dictionary = {
       "Je conçois des applications web modernes avec une attention particulière portée à la qualité du code, à l'architecture et à l'expérience utilisateur. Curieux de nature, je m'intéresse également aux outils d'IA, à l'automatisation et aux méthodes qui permettent de développer plus efficacement.",
       "J'apprécie particulièrement les projets qui combinent réflexion technique, résolution de problèmes et création d'interfaces claires et intuitives. Mon objectif est de construire des solutions fiables, maintenables et adaptées aux besoins réels des utilisateurs.",
     ],
+  },
+
+  now: {
+    readingLabel: 'Je lis en ce moment',
+    viewBooks: 'Voir mes livres',
+    workingLabel: 'Je travaille sur',
+    privateProject: 'Projet privé',
+  },
+
+  books: {
+    title: 'Livres',
+    paragraphs: [
+      "Ce que je lis en ce moment, et les livres que j'ai lus et aimés. Certains en anglais, d'autres en français.",
+    ],
+    currentlyReading: 'En cours',
+    languages: {
+      en: 'Anglais',
+      fr: 'Français',
+    },
   },
 
   about: {

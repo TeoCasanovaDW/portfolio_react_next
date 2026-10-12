@@ -36,6 +36,10 @@ export const en = {
     article: {
       title: '{title} | Téo Casanova',
     },
+    books: {
+      title: 'Books | Téo Casanova',
+      description: 'The books I am reading and the ones I read and loved.',
+    },
     notFound: {
       title: 'Page not found | Téo Casanova',
       description: 'This page does not exist or has been moved.',
@@ -70,6 +74,25 @@ export const en = {
       'I build modern web applications with a strong focus on code quality, architecture and user experience. Naturally curious, I also follow AI tools, automation and the methods that make development more efficient.',
       'I especially enjoy projects that combine technical thinking, problem solving and the design of clear, intuitive interfaces. My goal is to build reliable, maintainable solutions that fit real user needs.',
     ],
+  },
+
+  now: {
+    readingLabel: 'Currently reading',
+    viewBooks: 'See my books',
+    workingLabel: 'Working on',
+    privateProject: 'Private project',
+  },
+
+  books: {
+    title: 'Books',
+    paragraphs: [
+      'What I am reading right now, and the books I read and loved. Some in English, some in French.',
+    ],
+    currentlyReading: 'Reading',
+    languages: {
+      en: 'English',
+      fr: 'French',
+    },
   },
 
   about: {

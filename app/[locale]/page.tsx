@@ -1,7 +1,12 @@
 import type { Metadata } from 'next'
+import BookCover from '@/components/books/BookCover'
+import NowCard from '@/components/home/NowCard'
+import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
 import Icon from '@/components/ui/Icon'
+import { books, currentlyReadingSlug } from '@/data/books'
 import { contact } from '@/data/contact'
+import { workingOn } from '@/data/now'
 import { getDictionary, localizePath, resolveLocale } from '@/lib/i18n'
 import { localeAlternates } from '@/lib/site'
 
@@ -18,7 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function HomePage({ params }: Props) {
   const locale = resolveLocale((await params).locale)
-  const { cta, home } = getDictionary(locale)
+  const { cta, home, now, books: booksCopy } = getDictionary(locale)
+  const { languages } = booksCopy
+  const reading = books.find((book) => book.slug === currentlyReadingSlug) ?? books[0]
 
   return (
     <section className="flex min-h-[calc(100vh-80px)] items-center">
@@ -65,6 +72,23 @@ export default async function HomePage({ params }: Props) {
                 <Icon name={link.icon} size={22} alt="" />
               </a>
             ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14">
+            <NowCard
+              label={now.readingLabel}
+              media={<BookCover src={reading.cover} alt={reading.title} className="w-24 shrink-0 self-start" />}
+              title={reading.title}
+              subtitle={reading.author}
+              footer={<Badge label={languages[reading.language]} variant="dark" />}
+              link={{ label: now.viewBooks, href: localizePath('/books', locale) }}
+            />
+            <NowCard
+              label={now.workingLabel}
+              title={workingOn.name[locale]}
+              subtitle={workingOn.description[locale]}
+              footer={<Badge label={now.privateProject} variant="dark" />}
+            />
           </div>
         </div>
       </div>

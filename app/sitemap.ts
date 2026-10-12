@@ -5,7 +5,7 @@ import { projectSlugs } from '@/lib/projects'
 import { absoluteUrl } from '@/lib/site'
 
 /** Public pages, excluding `/dev/ui` which is temporary and out of scope. */
-const paths = ['/', '/about', '/projects', '/blog', '/contact']
+const paths = ['/', '/about', '/projects', '/blog', '/books', '/contact']
 
 /**
  * One entry per page and per language, with the `hreflang` of both languages
