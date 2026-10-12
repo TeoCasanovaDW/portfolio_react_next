@@ -71,8 +71,7 @@ export const en = {
     titleStart: 'React',
     titleEnd: 'Next.js Developer',
     paragraphs: [
-      'I build modern web applications with a strong focus on code quality, architecture and user experience. Naturally curious, I also follow AI tools, automation and the methods that make development more efficient.',
-      'I especially enjoy projects that combine technical thinking, problem solving and the design of clear, intuitive interfaces. My goal is to build reliable, maintainable solutions that fit real user needs.',
+      'I build modern web applications with a strong focus on code quality, architecture and user experience. I enjoy projects that combine technical thinking and problem solving, and I follow AI tools and automation to develop more efficiently.',
     ],
   },
 

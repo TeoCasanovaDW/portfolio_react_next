@@ -70,8 +70,7 @@ export const fr: Dictionary = {
     titleStart: 'Développeur React',
     titleEnd: 'Next.js',
     paragraphs: [
-      "Je conçois des applications web modernes avec une attention particulière portée à la qualité du code, à l'architecture et à l'expérience utilisateur. Curieux de nature, je m'intéresse également aux outils d'IA, à l'automatisation et aux méthodes qui permettent de développer plus efficacement.",
-      "J'apprécie particulièrement les projets qui combinent réflexion technique, résolution de problèmes et création d'interfaces claires et intuitives. Mon objectif est de construire des solutions fiables, maintenables et adaptées aux besoins réels des utilisateurs.",
+      "Je conçois des applications web modernes, avec une attention particulière portée à la qualité du code, à l'architecture et à l'expérience utilisateur. J'aime les projets qui mêlent réflexion technique et résolution de problèmes, et je m'intéresse aux outils d'IA et à l'automatisation pour développer plus efficacement.",
     ],
   },
 
