@@ -146,6 +146,14 @@ export const fr: Dictionary = {
     features: 'Fonctionnalités',
     demonstrates: 'Ce que ce projet démontre',
     limits: 'Limites actuelles',
+    media: {
+      title: 'Présentation & communication',
+      storePanel: 'Visuels de présentation type App Store de Recall’ect',
+      portraitAd: 'Publicité motion design de Recall’ect au format 9:16',
+      landscapeAd: 'Publicité motion design de Recall’ect au format 16:9',
+      portraitCaption: 'Publicité 9:16',
+      landscapeCaption: 'Publicité 16:9',
+    },
   },
 
   blog: {

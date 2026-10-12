@@ -60,12 +60,34 @@ export type ProjectFeature = {
 export type ProjectLinkBase = Omit<ProjectLink, 'label'>
 
 /** Category of a stack group; its label is translated in the dictionary (`project.stackCategories`). */
-export type StackCategory = 'frontend' | 'backend' | 'database' | 'testing' | 'deployment' | 'tools'
+export type StackCategory =
+  | 'frontend'
+  | 'backend'
+  | 'database'
+  | 'testing'
+  | 'deployment'
+  | 'tools'
 
 /** Technologies of a project belonging to the same category. */
 export type StackGroup = {
   category: StackCategory
   items: readonly string[]
+}
+
+/** Video of a project with its poster. Captions are translated in the dictionary. */
+export type ProjectVideo = {
+  src: string
+  poster: string
+  /** Pixel size of the source, used to reserve the right aspect ratio. */
+  width: number
+  height: number
+}
+
+/** Optional marketing media of a project: two ads and a store-style panel. */
+export type ProjectMedia = {
+  portraitVideo: ProjectVideo
+  landscapeVideo: ProjectVideo
+  storePanel: { src: string; width: number; height: number }
 }
 
 /**
@@ -81,6 +103,7 @@ export type ProjectBase = {
   techLogos: readonly TechLogo[]
   stack: readonly StackGroup[]
   featureIcons: readonly IconName[]
+  media?: ProjectMedia
 }
 
 /**
@@ -118,4 +141,5 @@ export type Project = {
   features: ProjectFeature[]
   demonstrates: string[]
   limits: string[]
+  media?: ProjectMedia
 }

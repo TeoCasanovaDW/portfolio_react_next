@@ -147,6 +147,14 @@ export const en = {
     features: 'Features',
     demonstrates: 'What this project demonstrates',
     limits: 'Current limitations',
+    media: {
+      title: 'Presentation & communication',
+      storePanel: 'App Store-style presentation visuals for Recall’ect',
+      portraitAd: 'Recall’ect motion design ad in 9:16 format',
+      landscapeAd: 'Recall’ect motion design ad in 16:9 format',
+      portraitCaption: '9:16 ad',
+      landscapeCaption: '16:9 ad',
+    },
   },
 
   blog: {

@@ -53,6 +53,45 @@ export const frProjects: Record<ProjectSlug, ProjectContent> = {
       'Les uploads transitent par les Server Actions et restent soumis à la limite de 4,5 Mo par requête imposée par Vercel',
     ],
   },
+  recallect: {
+    type: 'Application web PWA / Apprentissage du vocabulaire anglais',
+    shortDescription:
+      'Application personnelle pour mémoriser le vocabulaire anglais croisé en lisant, menée de l’idée jusqu’à sa communication : UX, usage réel, PWA, visuels de store et publicités.',
+    description:
+      'Recall’ect est née d’un besoin personnel : mieux retenir le vocabulaire anglais que je croise en lisant, avec une application pensée pour accompagner ma lecture. Je l’ai traitée comme un vrai produit, de l’idée jusqu’à sa présentation, sans objectif commercial.',
+    tags: ['Produit', 'PWA', 'UX'],
+    linkLabels: [],
+    context:
+      'J’ai d’abord construit Recall’ect pour moi, pour accompagner ma lecture en anglais et retenir les mots que j’y croise. Je ne cherchais ni à créer un SaaS ni à la vendre : je voulais prendre une idée simple et la pousser jusqu’au bout, comme un vrai produit. Je ne me suis donc pas arrêté au développement. J’ai réfléchi au flow de capture et de révision, au stockage des données et au déploiement en PWA, puis je l’ai utilisée plusieurs jours pour repérer ce qui clochait et la faire évoluer à partir de l’usage réel. Même sans intention de la publier sur les stores, j’ai continué jusqu’à la partie marketing pour m’entraîner au cycle de vie complet d’une application : visuels type App Store et deux publicités motion design.',
+    technicalChoices: [
+      'Un flow de capture court : je saisis le mot ou l’expression, j’ajoute si je veux la phrase de ma lecture où je l’ai croisé, et la traduction tient compte de ce contexte',
+      'Un Arsenal pour retrouver et rechercher tout ce que j’ai ajouté, plutôt qu’une simple liste de mots',
+      'Une révision en flashcards avec une auto-évaluation, pour que les mots reviennent au bon moment',
+      'Le déploiement en PWA pour garder l’application à portée de main et noter un mot sans interrompre ma lecture',
+      'Des ajustements décidés après plusieurs jours d’usage réel plutôt que sur des hypothèses',
+      'Des visuels type App Store et deux publicités motion design (9:16 et 16:9) pour travailler la présentation et la communication',
+    ],
+    featureLabels: [
+      'Traduction en contexte',
+      'Révision en flashcards',
+      'Révision espacée',
+      'Arsenal et recherche',
+      'Installable en PWA',
+    ],
+    demonstrates: [
+      'Prendre une idée simple, accompagner sa lecture, et la mener jusqu’à un produit utilisable au quotidien',
+      'Concevoir l’UX d’un flow de capture et de révision',
+      'Faire évoluer un produit à partir de l’usage réel plutôt que d’hypothèses',
+      'Déployer une application en PWA',
+      'Présenter et communiquer un produit : visuels de store et motion design',
+      'Travailler sur autre chose que le code pur : produit, UX, itération et communication',
+    ],
+    limits: [
+      'Projet personnel, non destiné à être publié sur les stores ni commercialisé',
+      'Visuels et publicités réalisés pour m’exercer au cycle de vie complet d’une application, pas pour un lancement',
+      'Pensée pour mon propre usage : elle n’a pas été testée auprès d’autres utilisateurs',
+    ],
+  },
   abricot: {
     type: 'Application web Next.js / SaaS de gestion de projet',
     shortDescription:

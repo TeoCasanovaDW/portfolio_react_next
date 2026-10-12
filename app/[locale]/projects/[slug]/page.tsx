@@ -8,6 +8,7 @@ import SectionTitle from '@/components/ui/SectionTitle'
 import IconBadge from '@/components/ui/IconBadge'
 import ProjectDetailList from '@/components/projects/ProjectDetailList'
 import ProjectLinks from '@/components/projects/ProjectLinks'
+import ProjectMedia from '@/components/projects/ProjectMedia'
 import Icon from '@/components/ui/Icon'
 import { getDictionary, localizePath, resolveLocale } from '@/lib/i18n'
 import { getProject, projectSlugs } from '@/lib/projects'
@@ -111,6 +112,14 @@ export default async function ProjectPage({ params }: Props) {
           <SectionTitle title={labels.context} />
           <p className="text-text-secondary text-base leading-relaxed">{project.context}</p>
         </section>
+
+        {/* Right after the context: the part of the story that matters most for this project */}
+        {project.media && (
+          <section>
+            <SectionTitle title={labels.media.title} />
+            <ProjectMedia media={project.media} labels={labels.media} />
+          </section>
+        )}
 
         {/* Stack — dark card */}
         <section>

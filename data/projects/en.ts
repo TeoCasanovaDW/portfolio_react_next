@@ -53,6 +53,45 @@ export const enProjects: Record<ProjectSlug, ProjectContent> = {
       'Uploads go through Server Actions and remain subject to Vercel’s 4.5 MB request body limit',
     ],
   },
+  recallect: {
+    type: 'PWA web app / English vocabulary learning',
+    shortDescription:
+      'Personal app to memorize English vocabulary met while reading, taken from the idea all the way to its communication: UX, real usage, PWA, store visuals and ads.',
+    description:
+      'Recall’ect started as a personal need: remembering the English vocabulary I come across while reading, with an app designed to support my reading. I treated it like a real product, from the idea to its presentation, with no commercial goal.',
+    tags: ['Product', 'PWA', 'UX'],
+    linkLabels: [],
+    context:
+      'I first built Recall’ect for myself, to support my reading in English and retain the words I come across. I was not trying to create a SaaS or sell it: I wanted to take a simple idea and push it all the way, like a real product. So I did not stop at development. I thought about the capture and review flow, data storage and PWA deployment, then used the app for several days to spot what was wrong and let it evolve from real usage. Even without any plan to publish it on the stores, I kept going through the marketing side to practice the full lifecycle of an app: App Store-style visuals and two motion design ads.',
+    technicalChoices: [
+      'A short capture flow: I type the word or expression, optionally add the sentence from my reading where I came across it, and the translation takes that context into account',
+      'An Arsenal to find and search everything I have added, rather than a plain word list',
+      'Flashcard review with self-rating, so words come back at the right time',
+      'PWA deployment to keep the app within reach and note a word down without interrupting my reading',
+      'Adjustments decided after several days of real usage rather than on assumptions',
+      'App Store-style visuals and two motion design ads (9:16 and 16:9) to work on presentation and communication',
+    ],
+    featureLabels: [
+      'Translation in context',
+      'Flashcard review',
+      'Spaced repetition',
+      'Arsenal and search',
+      'Installable as a PWA',
+    ],
+    demonstrates: [
+      'Taking a simple idea, supporting my reading, all the way to a product I use every day',
+      'Designing the UX of a capture and review flow',
+      'Evolving a product from real usage rather than assumptions',
+      'Deploying an application as a PWA',
+      'Presenting and communicating a product: store visuals and motion design',
+      'Working on more than pure code: product, UX, iteration and communication',
+    ],
+    limits: [
+      'Personal project, not meant to be published on the stores or commercialized',
+      'Visuals and ads made to practice the full lifecycle of an app, not for a launch',
+      'Designed for my own use: it has not been tested with other users',
+    ],
+  },
   abricot: {
     type: 'Next.js web app / Project management SaaS',
     shortDescription:

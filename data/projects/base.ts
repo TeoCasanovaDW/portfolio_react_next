@@ -43,6 +43,36 @@ export const projectBases = [
     ],
   },
   {
+    slug: 'recallect',
+    name: 'Recall’ect',
+    year: '2026',
+    image: '/images/projects/recallect.png',
+    links: [],
+    techLogos: [],
+    stack: [
+      { category: 'frontend', items: ['Vinext', 'React', 'TypeScript', 'Tailwind CSS v4'] },
+      { category: 'backend', items: ['Cloudflare Workers', 'Cloudflare Workers AI'] },
+      { category: 'database', items: ['Cloudflare D1'] },
+      { category: 'deployment', items: ['Cloudflare Workers', 'PWA'] },
+    ],
+    featureIcons: ['route', 'sync', 'history', 'filter', 'dashboard'],
+    media: {
+      portraitVideo: {
+        src: '/videos/recallect/ad-portrait.mp4',
+        poster: '/videos/recallect/ad-portrait-poster.jpg',
+        width: 1080,
+        height: 1920,
+      },
+      landscapeVideo: {
+        src: '/videos/recallect/ad-landscape.mp4',
+        poster: '/videos/recallect/ad-landscape-poster.jpg',
+        width: 1920,
+        height: 1080,
+      },
+      storePanel: { src: '/images/projects/recallect/store-panel.jpg', width: 2580, height: 932 },
+    },
+  },
+  {
     slug: 'abricot',
     name: 'Abricot',
     year: '2026',

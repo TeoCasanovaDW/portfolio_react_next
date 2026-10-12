@@ -29,6 +29,7 @@ function resolveProject(base: ProjectBase, content: ProjectContent): Project {
     })),
     demonstrates: content.demonstrates,
     limits: content.limits,
+    media: base.media,
   }
 }
 
